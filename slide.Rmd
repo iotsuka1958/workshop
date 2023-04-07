@@ -506,9 +506,9 @@ p +  scale_colour_discrete(name = "種", labels = iris$Species) +
 
 
 ```{r}
-prevalence <- .01
-sensitivity <-  99
-specificity <-  97
+prevalence <- .8    #有病率
+sensitivity <-  90  #感度
+specificity <-  93  #特異度
 
 precision <- function(x, y, z){
   x * y / (x * y + (100 - x) * (100 - z))
