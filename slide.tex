@@ -1,0 +1,650 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+%% PDFメタデータの文字化け防止
+% https://blog.miz-ar.info/2015/09/latex-hyperref-tips/
+% https://tex.stackexchange.com/questions/24445/hyperref-lualatex-and-unicode-bookmarks-issue-garbled-page-numbers-in-ar-for-l
+\hypersetup{%
+  pdfencoding=auto
+}
+
+%% Fonts
+\usefonttheme[onlymath]{serif}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+%\usepackage{arev}
+\usepackage[scale=1.0]{tgheros}  % San serif font
+\usepackage[scaled]{beramono}    % Monospace font
+
+%% Japanese font
+\usepackage{luatexja-otf}
+\usepackage[match,deluxe,expert,haranoaji,nfssonly]{luatexja-preset} % Notoフォント使用
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+%%
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+%% https://tex.stackexchange.com/questions/62202/change-background-colour-of-verbatim-environment
+\let\oldv\verbatim
+\let\oldendv\endverbatim
+\def\verbatim{\par\setbox0\vbox\bgroup\oldv}
+\def\endverbatim{\oldendv\egroup\fboxsep0pt \noindent\colorbox[gray]{0.95}{\usebox0}\par}
+
+%% https://stackoverflow.com/questions/38323331/code-chunk-font-size-in-beamer-with-knitr-and-latex
+%% change fontsize of R code
+\let\oldShaded\Shaded
+\let\endoldShaded\endShaded 
+\renewenvironment{Shaded}{\footnotesize\oldShaded}{\endoldShaded}
+
+\usepackage{listings}
+\lstset{%
+  frame = shadow,
+  backgroundcolor = {\color[gray]{.95}},
+  basicstyle = {\small\ttfamily},
+  breaklines = true,
+  upquote = true
+}
+%%%%%%%%%%%%%%%
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdfauthor={iotsuka},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{oyoyo\\
+hogehoge研修}
+\author{iotsuka}
+\date{2022-06-08}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{data}
+\protect\hypertarget{data}{}
+\begin{itemize}[<+->]
+\item
+  4つのデータ(data\_1 ～ data\_4)があります
+\item
+  それぞれのデータは、11組のxとyから構成されています
+\end{itemize}
+\end{frame}
+
+\begin{frame}{data}
+\protect\hypertarget{data-1}{}
+\begin{tabular}{rr}
+\multicolumn{2}{l}{data\_1}\\
+\toprule
+x & y\\
+\midrule
+10 & 8.04\\
+8 & 6.95\\
+13 & 7.58\\
+9 & 8.81\\
+11 & 8.33\\
+14 & 9.96\\
+6 & 7.24\\
+4 & 4.26\\
+12 & 10.84\\
+7 & 4.82\\
+5 & 5.68\\
+\bottomrule
+\end{tabular}\hfill
+\begin{tabular}{rr}
+\multicolumn{2}{l}{data\_2}\\
+\toprule
+x & y\\
+\midrule
+10 & 9.14\\
+8 & 8.14\\
+13 & 8.74\\
+9 & 8.77\\
+11 & 9.26\\
+14 & 8.10\\
+6 & 6.13\\
+4 & 3.10\\
+12 & 9.13\\
+7 & 7.26\\
+5 & 4.74\\
+\bottomrule
+\end{tabular}\hfill
+\begin{tabular}{rr}
+\multicolumn{2}{l}{data\_3}\\
+\toprule
+x & y\\
+\midrule
+10 & 7.46\\
+8 & 6.77\\
+13 & 12.74\\
+9 & 7.11\\
+11 & 7.81\\
+14 & 8.84\\
+6 & 6.08\\
+4 & 5.39\\
+12 & 8.15\\
+7 & 6.42\\
+5 & 5.73\\
+\bottomrule
+\end{tabular}\hfill
+\begin{tabular}{rr}
+\multicolumn{2}{l}{data\_4}\\
+\toprule
+x & y\\
+\midrule
+8 & 6.58\\
+8 & 5.76\\
+8 & 7.71\\
+8 & 8.84\\
+8 & 8.47\\
+8 & 7.04\\
+8 & 5.25\\
+19 & 12.50\\
+8 & 5.56\\
+8 & 7.91\\
+8 & 6.89\\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+\begin{frame}{data}
+\protect\hypertarget{data-2}{}
+それぞれどういうデータなんだろう
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  表だけ見てもよくわからない
+\end{itemize}
+\end{frame}
+
+\begin{frame}{data}
+\protect\hypertarget{data-3}{}
+それぞれどういうデータなんだろう
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  xの平均
+\item
+  xの分散
+\item
+  yの平均
+\item
+  yの分散
+\item
+  xとyの相関係数
+\item
+  回帰直線の式
+\end{itemize}
+\end{frame}
+
+\begin{frame}{summarise}
+\protect\hypertarget{summarise}{}
+\begin{longtable}[]{@{}lrrrrr@{}}
+\toprule()
+data & x\_mean & x\_var & y\_mean & y\_var & cor \\
+\midrule()
+\endhead
+data\_1 & 9 & 11 & 7.500909 & 4.127269 & 0.8164205 \\
+data\_2 & 9 & 11 & 7.500909 & 4.127629 & 0.8162365 \\
+data\_3 & 9 & 11 & 7.500000 & 4.122620 & 0.8162867 \\
+data\_4 & 9 & 11 & 7.500909 & 4.123249 & 0.8165214 \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  要約統計量はよく似ている
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{visualization}
+\protect\hypertarget{visualization}{}
+\begin{figure}
+\centering
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-4-1.pdf}
+\caption{\texttt{ggplot2} によるグラフ}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{visualization}
+\protect\hypertarget{visualization-1}{}
+\begin{figure}
+\centering
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-5-1.pdf}
+\caption{\texttt{ggplot2} によるグラフ}
+\end{figure}
+\end{frame}
+
+\begin{frame}{lesson}
+\protect\hypertarget{lesson}{}
+表でみてもよくわからない
+
+平均値とか分散を計算してもよくわからない
+
+図示がだいじ
+\end{frame}
+
+\begin{frame}{research}
+\protect\hypertarget{research}{}
+\LARGE
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \textbullet ある町
+\item
+  \textbullet\hspace{1pt} 4つの学校
+\item
+  \textbullet 同じテスト
+\end{itemize}
+\end{frame}
+
+\begin{frame}{research}
+\protect\hypertarget{research-1}{}
+\LARGE
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  生徒対象に調査
+\item
+  　\textbullet テスト勉強にあてた時間
+\item
+  　\textbullet 実際の点数
+\end{itemize}
+\end{frame}
+
+\begin{frame}{hypothethis}
+\protect\hypertarget{hypothethis}{}
+\LARGE
+
+勉強時間と点数に関係があるでしょうか
+
+あるとしたらどういう関係が\ldots
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-8-1.pdf}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-1}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-9-1.pdf}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-2}{}
+\includegraphics[width=\textwidth]{./letsnotsee.jpg}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-3}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-10-1.pdf}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-4}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-11-1.pdf}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-5}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-12-1.pdf}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-6}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-13-1.pdf}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-7}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-14-1.pdf}
+\end{frame}
+
+\begin{frame}{Simpson's Paradox}
+\protect\hypertarget{simpsons-paradox}{}
+\large
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \textbullet{}\hspace{2pt}全体で見ると「勉強すればするほど成績がさがる」
+\item
+  \textbullet{}\hspace{2pt}学校ごとに見ると「勉強すればするほど成績があがる」
+\end{itemize}
+
+\normalsize
+\end{frame}
+
+\begin{frame}{quiz:How many millions are in a trillion?}
+\protect\hypertarget{quizhow-many-millions-are-in-a-trillion}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-15-1.pdf}
+\end{frame}
+
+\begin{frame}{quiz:How many millions are in a trillion?}
+\protect\hypertarget{quizhow-many-millions-are-in-a-trillion-1}{}
+\LARGE
+
+1兆は100万の何倍でしょう？
+
+\begin{tabular}{rr}\toprule
+回答&率\\\midrule
+千倍&18\%\\
+万倍&12\%\\
+10万倍&21\%\\
+100万倍&21\%\\
+1000万倍&17\%\\
+わからない&12\%\\\bottomrule
+\end{tabular}
+\end{frame}
+
+\begin{frame}{pie chart}
+\protect\hypertarget{pie-chart}{}
+\includegraphics[height=8cm]{slide_files/figure-beamer/unnamed-chunk-17-1}
+\end{frame}
+
+\begin{frame}{substitute for a pie chart}
+\protect\hypertarget{substitute-for-a-pie-chart}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-18-1.pdf}
+\end{frame}
+
+\begin{frame}{substitute for a pie chart}
+\protect\hypertarget{substitute-for-a-pie-chart-1}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-19-1.pdf}
+\end{frame}
+
+\begin{frame}[fragile]{substitute for a pie chart}
+\protect\hypertarget{substitute-for-a-pie-chart-2}{}
+\begin{verbatim}
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## i Please use `linewidth` instead.
+\end{verbatim}
+
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-20-1.pdf}
+\end{frame}
+
+\begin{frame}{quiz:How many millions are in a trillion?}
+\protect\hypertarget{quizhow-many-millions-are-in-a-trillion-2}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-21-1.pdf}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink}{}
+\Huge
+
+有病率 0.1\%
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-1}{}
+\Large
+
+その検査は\ldots{}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-2}{}
+\Large
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \textbullet{}\hspace{2pt}病気のとき陽性になる確率は99.0\%
+\item
+  \textbullet{}\hspace{2pt}病気でないとき陰性になる確率は97.0\%
+\end{itemize}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-3}{}
+\Huge
+
+\begin{itemize}[<+->]
+\item
+  その検査を受けました
+\item
+  → 陽性
+\end{itemize}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-4}{}
+\Huge
+
+実際に病気にかかっている確率は??
+\end{frame}
+
+\begin{frame}[fragile]{Slide with R Output}
+\protect\hypertarget{slide-with-r-output}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(cars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{文書・資料}
+\protect\hypertarget{ux6587ux66f8ux8cc7ux6599}{}
+To do our work, we all have to read a mass of papers. Nearly all of them
+are far too long. This wastes time, while energy has to be spent in
+looking for the essential points.
+
+I ask my colleagues and their staffs to see to it that their Reports are
+shorter.
+\end{frame}
+
+\begin{frame}{文書・資料}
+\protect\hypertarget{ux6587ux66f8ux8cc7ux6599-1}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \textbullet{}\hspace{2pt} The aim should be Reports which set out the
+  main points in a series of short, crisp paragraphs.
+\item
+  \textbullet{}\hspace{2pt} If a Report relies on detailed analysis of
+  some complicated factors, or on statistics, these should be set out in
+  an Appendix.
+\item
+  \textbullet{}\hspace{2pt} Often the occasion is best met by submitting
+  not a full-dress Report, but an Aide-memoire consisting of headings
+  only, which can be expanded orally if needed.
+\item
+  \textbullet\hspace{2pt}Let us have an end of such phrases as these:
+  ``It is also of importance to bear in mind the following
+  considerations\ldots{}'', or ``Consideration should be given to the
+  possibility of carrying into effect\ldots{}'' Most of these woolly
+  phrases are mere padding, which can be left out altogether, or
+  replaced by a single word. Let us not shrink from using the short
+  expressive phrase, even if it is conversational.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{文書・資料}
+\protect\hypertarget{ux6587ux66f8ux8cc7ux6599-2}{}
+Reports drawn up on the lines I propose may at first seem rough as
+compared with the flat surface of officialese jargon. But the saving in
+time will be great, while the discipline of setting out the real points
+concisely will prove an aid to clearer thinking.
+\end{frame}
+
+\begin{frame}{Slide with Plot}
+\protect\hypertarget{slide-with-plot}{}
+\includegraphics{slide_files/figure-beamer/pressure-1.pdf}
+\end{frame}
+
+\begin{frame}{tohoho}
+\protect\hypertarget{tohoho}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-25-1.pdf}
+\end{frame}
+
+\begin{frame}{tohoho}
+\protect\hypertarget{tohoho-1}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-26-1.pdf}
+\end{frame}
+
+\begin{frame}[fragile]{tohoho}
+\protect\hypertarget{tohoho-2}{}
+\begin{figure}
+\centering
+\includegraphics{slide_files/figure-beamer/plot-sample-1.pdf}
+\caption{\texttt{ggplot2} によるグラフ}
+\end{figure}
+\end{frame}
+
+\end{document}

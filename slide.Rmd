@@ -65,6 +65,7 @@ df_4 <- anscombe %>%
 ```
 
 
+
 # data
 
 
@@ -348,7 +349,6 @@ p +
 \normalsize
 
 
-
 # quiz:How many millions are in a trillion?
 
 
@@ -556,6 +556,8 @@ Reports drawn up on the lines I propose may at first seem rough as compared with
 plot(pressure)
 ```
 
+
+
 # tohoho
 
 
@@ -623,3 +625,4 @@ ggplot(diamonds, aes(x=carat, y=price, color=clarity)) +
   geom_point() +
   labs( x = "カラット数", y = "価格") + scale_color_viridis_d()
 ```
+

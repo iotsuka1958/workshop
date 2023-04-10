@@ -1,0 +1,46 @@
+%% PDFメタデータの文字化け防止
+% https://blog.miz-ar.info/2015/09/latex-hyperref-tips/
+% https://tex.stackexchange.com/questions/24445/hyperref-lualatex-and-unicode-bookmarks-issue-garbled-page-numbers-in-ar-for-l
+\hypersetup{%
+  pdfencoding=auto
+}
+
+%% Fonts
+\usefonttheme[onlymath]{serif}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+%\usepackage{arev}
+\usepackage[scale=1.0]{tgheros}  % San serif font
+\usepackage[scaled]{beramono}    % Monospace font
+
+%% Japanese font
+\usepackage{luatexja-otf}
+\usepackage[match,deluxe,expert,haranoaji,nfssonly]{luatexja-preset} % Notoフォント使用
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+%%
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+%% https://tex.stackexchange.com/questions/62202/change-background-colour-of-verbatim-environment
+\let\oldv\verbatim
+\let\oldendv\endverbatim
+\def\verbatim{\par\setbox0\vbox\bgroup\oldv}
+\def\endverbatim{\oldendv\egroup\fboxsep0pt \noindent\colorbox[gray]{0.95}{\usebox0}\par}
+
+%% https://stackoverflow.com/questions/38323331/code-chunk-font-size-in-beamer-with-knitr-and-latex
+%% change fontsize of R code
+\let\oldShaded\Shaded
+\let\endoldShaded\endShaded 
+\renewenvironment{Shaded}{\footnotesize\oldShaded}{\endoldShaded}
+
+\usepackage{listings}
+\lstset{%
+  frame = shadow,
+  backgroundcolor = {\color[gray]{.95}},
+  basicstyle = {\small\ttfamily},
+  breaklines = true,
+  upquote = true
+}
+%%%%%%%%%%%%%%%
+\usepackage{booktabs}
