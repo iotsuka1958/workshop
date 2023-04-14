@@ -467,7 +467,7 @@ p +  scale_colour_discrete(name = "種", labels = iris$Species) +
 
 \Huge
 
-有病率 0.1\%
+有病率 0.8\%
 
 
 # quiz:whaddayathink?
