@@ -282,6 +282,17 @@ p <- df_A %>% bind_rows(df_B, df_C, df_D) %>%
 p
 ```
 
+
+```{r echo=FALSE}
+q <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
+  ggplot(aes(time, point * 10)) + geom_jitter(width = .5, height = .5, alpha = .8) +
+  labs(x = "time spent studying", 
+       y = "score"
+       )
+q
+```
+
+
 # plot
 
 ```{r echo=FALSE, message=FALSE}
@@ -289,10 +300,16 @@ p +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
+```{r echo=FALSE, message=FALSE}
+q +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
 
 # plot
 
-\includegraphics[width=\textwidth]{./letsnotsee.jpg}
+
+<!-- \includegraphics[width=\textwidth]{./letsnotsee.jpg} -->
 
 
 # plot
@@ -303,6 +320,15 @@ p +
   scale_color_viridis_d(name = "")
 ```
 
+```{r echo=FALSE}
+q +
+  aes(colour = school) +
+  scale_color_viridis_d(name = "")
+```
+
+
+
+
 # plot
 
 ```{r echo=FALSE}
@@ -312,11 +338,25 @@ p +
   facet_wrap(~school)
 ```
 
+```{r echo=FALSE}
+q +
+  aes(colour = school) +
+  scale_color_viridis_d(guide = "none") +
+  facet_wrap(~school)
+```
 
 # plot
 
 ```{r echo=FALSE}
 p +
+  aes(colour = school) +
+  scale_color_viridis_d(guide = "none") +
+  facet_wrap(~school) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r echo=FALSE}
+q +
   aes(colour = school) +
   scale_color_viridis_d(guide = "none") +
   facet_wrap(~school) +
@@ -332,6 +372,12 @@ p +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
+```{r echo=FALSE}
+q +
+  aes(colour = school) +
+  scale_color_viridis_d(name = "") +
+  geom_smooth(method = "lm", se = FALSE)
+```
 
 # plot
 
@@ -339,6 +385,13 @@ p +
 p +
   geom_smooth(method = "lm", se = FALSE)
 ```
+
+```{r echo=FALSE, message=FALSE}
+q +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
 
 # Simpson's Paradox
 \large
