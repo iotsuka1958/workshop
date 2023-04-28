@@ -3,7 +3,7 @@ title: |
   | oyoyo
   | hogehoge研修
 author: "iotsuka"
-date: '2022-06-08'
+date: '2023-06-12'
 output:
   beamer_presentation:
     theme: default
@@ -33,14 +33,159 @@ library(gt)
 library(ragg)
 ```
 
+
+# a beautiful story
+
+\Huge
+
+- 予算の会議
+- ある事業について
+- どんな成果?
+
+# a beautiful story
+
+\IfFileExists{kids.jpg}{\includegraphics{kids.jpg}}{\relax}
+
+# evidence-based policy-making
+\Huge
+
+- 思いだけでは進まない
+- dataを活用しよう
+
+
+# quiz:whaddayathink?
+
+\Huge
+
+
+
+検査を受けました \textcolor{white}{\textrightarrow{}\,\,{}陽性!!!}
+
+# quiz:whaddayathink?
+
+\Huge
+
+
+
+検査を受けました \textcolor{black}{\textrightarrow{}\,\,{}陽性!!!}
+
+# quiz:whaddayathink?
+
+\LARGE
+
+1\%の人がこの病気\textcolor{white}{(有病率1\%)}
+
+# quiz:whaddayathink?
+
+\LARGE
+
+1\%の人がこの病気\textcolor{black}{(有病率1\%)}
+
+
+
+
+# quiz:whaddayathink?
+
+\LARGE
+
+- この検査は
+\bigskip
+- \textbullet{}\hspace{2pt}病気のとき陽性になる確率90\%
+- \textbullet{}\hspace{2pt}病気でないとき陰性になる確率90\%
+
+
+
+# quiz:whaddayathink?
+
+\Huge
+
+実際に病気である確率は??
+
+
+
+# answer
+
+- 有病率1\%, 感度90\%, 特異度90\%
+
+\bigskip
+\bigskip
+
+- \hspace*{-25pt}\scalebox{.7}{%
+\begin{tikzpicture}
+[
+    level 1/.style={sibling distance=80mm},
+    level 2/.style={sibling distance=60mm},
+]
+	\node {1,000人}
+		child {
+        node {\begin{tabular}{c}病気\\10人\end{tabular}}
+		      child {node {%
+                       \begin{tabular}{c}
+                       9人\\(真陽性)
+                       \end{tabular} %
+                       }
+              }
+		      child {node {%
+		                   \begin{tabular}{c}
+                       1人\\(偽陰性)
+                       \end{tabular}%
+                       }
+                 }
+            }
+		child {
+		    node {\begin{tabular}{c}病気でない\\990人\end{tabular}}
+		      child {node {%
+		                   \begin{tabular}{c}
+                       891人\\(真陰性)
+                       \end{tabular}%
+            	  	     }
+              	}
+		      child {node {%
+                       \begin{tabular}{c}
+                       99人\\(偽陽性)
+                       \end{tabular}%
+                       }
+                }
+     	  	  };
+\end{tikzpicture}%
+}
+
+# answer
+\begin{center}\Huge
+$\frac{9}{9 + 99}=0.083333$
+\end{center}
+
+```{r}
+prevalence <- .8    #有病率
+sensitivity <-  90  #感度
+specificity <-  93  #特異度
+
+precision <- function(x, y, z){
+  x * y / (x * y + (100 - x) * (100 - z))
+}
+
+accuracy <- function(x, y, z){
+  (x * y + (100 - x) * z) / 10000
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 # data
 
 - 4つのデータ(data\_1 ～ data\_4)があります
 
 - それぞれのデータは、11組のxとyから構成されています
-
-
-
 
 ```{r echo=FALSE}
 df_1 <- anscombe %>%
@@ -65,9 +210,7 @@ df_4 <- anscombe %>%
 ```
 
 
-
 # data
-
 
 \begin{tabular}{rr}
 \multicolumn{2}{l}{data\_1}\\
@@ -161,10 +304,6 @@ x & y\\
 - xとyの相関係数
 - 回帰直線の式
 
-
-
-
-
 # summarise
 
 ```{r}
@@ -175,10 +314,7 @@ list(df_1, df_2, df_3, df_4) %>% map_dfr(~summarise(.x, across(.cols=everything(
   knitr::kable()
 ```
 
-
 >- 要約統計量はよく似ている
-
-
 
 # visualization
 
@@ -273,6 +409,7 @@ df_D <- df_C %>%
   mutate(time = time -.45, point = point + .75, school = "school_D")
 ```
 
+
 ```{r echo=FALSE}
 p <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
   ggplot(aes(time, point * 10)) + geom_point(alpha = .8) +
@@ -283,22 +420,20 @@ p
 ```
 
 
+
 ```{r echo=FALSE}
 q <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
-  ggplot(aes(time, point * 10)) + geom_jitter(width = .5, height = .5, alpha = .8) +
+  ggplot(aes(time, point * 10)) + geom_jitter(width = .8, height = .8, alpha = .8) +
   labs(x = "time spent studying", 
-       y = "score"
-       )
+       y = "score")
+       
 q
 ```
 
 
 # plot
 
-```{r echo=FALSE, message=FALSE}
-p +
-  geom_smooth(method = "lm", se = FALSE)
-```
+
 
 ```{r echo=FALSE, message=FALSE}
 q +
@@ -308,17 +443,12 @@ q +
 
 # plot
 
-
-<!-- \includegraphics[width=\textwidth]{./letsnotsee.jpg} -->
+\IfFileExists{./letsnotsee.jpg}{\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax}
 
 
 # plot
 
-```{r echo=FALSE}
-p +
-  aes(colour = school) +
-  scale_color_viridis_d(name = "")
-```
+
 
 ```{r echo=FALSE}
 q +
@@ -331,12 +461,7 @@ q +
 
 # plot
 
-```{r echo=FALSE}
-p +
-  aes(colour = school) +
-  scale_color_viridis_d(guide = "none") +
-  facet_wrap(~school)
-```
+
 
 ```{r echo=FALSE}
 q +
@@ -347,13 +472,7 @@ q +
 
 # plot
 
-```{r echo=FALSE}
-p +
-  aes(colour = school) +
-  scale_color_viridis_d(guide = "none") +
-  facet_wrap(~school) +
-  geom_smooth(method = "lm", se = FALSE)
-```
+
 
 ```{r echo=FALSE}
 q +
@@ -365,12 +484,7 @@ q +
 
 # plot
 
-```{r echo=FALSE}
-p +
-  aes(colour = school) +
-  scale_color_viridis_d(name = "") +
-  geom_smooth(method = "lm", se = FALSE)
-```
+
 
 ```{r echo=FALSE}
 q +
@@ -381,10 +495,7 @@ q +
 
 # plot
 
-```{r echo=FALSE, message=FALSE}
-p +
-  geom_smooth(method = "lm", se = FALSE)
-```
+
 
 ```{r echo=FALSE, message=FALSE}
 q +
@@ -516,62 +627,6 @@ p +  scale_colour_discrete(name = "種", labels = iris$Species) +
 ```
 
 
-# quiz:whaddayathink?
-
-\Huge
-
-有病率 0.8\%
-
-
-# quiz:whaddayathink?
-
-\Large
-
-
-その検査は\ldots{}
-
-
-# quiz:whaddayathink?
-
-\Large
-
-- \textbullet{}\hspace{2pt}病気のとき陽性になる確率は99.0\%
-- \textbullet{}\hspace{2pt}病気でないとき陰性になる確率は97.0\%
-
-
-
-# quiz:whaddayathink?
-
-\Huge
-
-
-- その検査を受けました
-
-- → 陽性
-
-
-# quiz:whaddayathink?
-
-\Huge
-
-実際に病気にかかっている確率は??
-
-
-
-```{r}
-prevalence <- .8    #有病率
-sensitivity <-  90  #感度
-specificity <-  93  #特異度
-
-precision <- function(x, y, z){
-  x * y / (x * y + (100 - x) * (100 - z))
-}
-
-accuracy <- function(x, y, z){
-  (x * y + (100 - x) * z) / 10000
-}
-```
-
 # Slide with R Output
 
 ```{r cars, echo = TRUE}
@@ -602,12 +657,6 @@ Most of these woolly phrases are mere padding, which can be left out altogether,
 Reports drawn up on the lines I propose may at first seem rough as compared with the flat surface of officialese jargon. But the saving in time will be great, while the discipline of setting out the real points concisely will prove an aid to clearer thinking.
 
 
-
-# Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
 
 
 
@@ -660,22 +709,4 @@ df_likert %>% HH::likert(school~., ., as.percent = TRUE,
            xlab="percentage", ylab="School") 
 ```
 
-
-
-
-
-
-
-
-
-
-# tohoho
-
-```{r plot-sample, echo=FALSE, fig.cap="`ggplot2` によるグラフ"}
-data("diamonds")
-diamonds <- diamonds[sample(1:NROW(diamonds), size =), ]
-ggplot(diamonds, aes(x=carat, y=price, color=clarity)) +
-  geom_point() +
-  labs( x = "カラット数", y = "価格") + scale_color_viridis_d()
-```
 

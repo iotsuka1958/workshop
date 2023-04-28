@@ -183,6 +183,8 @@
 }
 %%%%%%%%%%%%%%%
 \usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pxpgfmark} % remember picture を可能にする
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -197,10 +199,155 @@
 \title{oyoyo\\
 hogehoge研修}
 \author{iotsuka}
-\date{2022-06-08}
+\date{2023-06-12}
 
 \begin{document}
 \frame{\titlepage}
+
+\begin{frame}{a beautiful story}
+\protect\hypertarget{a-beautiful-story}{}
+\Huge
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  予算の会議
+\item
+  ある事業について
+\item
+  どんな成果?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{a beautiful story}
+\protect\hypertarget{a-beautiful-story-1}{}
+\IfFileExists{kids.jpg}{\includegraphics{kids.jpg}}{\relax}
+\end{frame}
+
+\begin{frame}{evidence-based policy-making}
+\protect\hypertarget{evidence-based-policy-making}{}
+\Huge
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  思いだけでは進まない
+\item
+  dataを活用しよう
+\end{itemize}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink}{}
+\Huge
+
+検査を受けました \textcolor{white}{\textrightarrow{}\,\,{}陽性!!!}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-1}{}
+\Huge
+
+検査を受けました \textcolor{black}{\textrightarrow{}\,\,{}陽性!!!}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-2}{}
+\LARGE
+
+1\%の人がこの病気\textcolor{white}{(有病率1\%)}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-3}{}
+\LARGE
+
+1\%の人がこの病気\textcolor{black}{(有病率1\%)}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-4}{}
+\LARGE
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  この検査は \bigskip
+\item
+  \textbullet{}\hspace{2pt}病気のとき陽性になる確率90\%
+\item
+  \textbullet{}\hspace{2pt}病気でないとき陰性になる確率90\%
+\end{itemize}
+\end{frame}
+
+\begin{frame}{quiz:whaddayathink?}
+\protect\hypertarget{quizwhaddayathink-5}{}
+\Huge
+
+実際に病気である確率は??
+\end{frame}
+
+\begin{frame}{answer}
+\protect\hypertarget{answer}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  有病率1\%, 感度90\%, 特異度90\%
+\end{itemize}
+
+\bigskip
+\bigskip
+
+\begin{itemize}[<+->]
+\item
+  \hspace*{-25pt}\scalebox{.7}{%
+  \begin{tikzpicture}
+  [
+    level 1/.style={sibling distance=80mm},
+    level 2/.style={sibling distance=60mm},
+  ]
+    \node {1,000人}
+        child {
+        node {\begin{tabular}{c}病気\\10人\end{tabular}}
+              child {node {%
+                       \begin{tabular}{c}
+                       9人\\(真陽性)
+                       \end{tabular} %
+                       }
+              }
+              child {node {%
+                           \begin{tabular}{c}
+                       1人\\(偽陰性)
+                       \end{tabular}%
+                       }
+                 }
+            }
+        child {
+            node {\begin{tabular}{c}病気でない\\990人\end{tabular}}
+              child {node {%
+                           \begin{tabular}{c}
+                       891人\\(真陰性)
+                       \end{tabular}%
+                         }
+                }
+              child {node {%
+                       \begin{tabular}{c}
+                       99人\\(偽陽性)
+                       \end{tabular}%
+                       }
+                }
+              };
+  \end{tikzpicture}%
+  }
+\end{itemize}
+\end{frame}
+
+\begin{frame}{answer}
+\protect\hypertarget{answer-1}{}
+\begin{center}\Huge
+$\frac{9}{9 + 99}=0.083333$
+\end{center}
+\end{frame}
 
 \begin{frame}{data}
 \protect\hypertarget{data}{}
@@ -345,7 +492,7 @@ data\_4 & 9 & 11 & 7.500909 & 4.123249 & 0.8165214 \\
 \protect\hypertarget{visualization}{}
 \begin{figure}
 \centering
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-4-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-5-1.pdf}
 \caption{\texttt{ggplot2} によるグラフ}
 \end{figure}
 \end{frame}
@@ -354,7 +501,7 @@ data\_4 & 9 & 11 & 7.500909 & 4.123249 & 0.8165214 \\
 \protect\hypertarget{visualization-1}{}
 \begin{figure}
 \centering
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-5-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-6-1.pdf}
 \caption{\texttt{ggplot2} によるグラフ}
 \end{figure}
 \end{frame}
@@ -409,41 +556,44 @@ data\_4 & 9 & 11 & 7.500909 & 4.123249 & 0.8165214 \\
 
 \begin{frame}{plot}
 \protect\hypertarget{plot}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-8-1.pdf}
-\end{frame}
-
-\begin{frame}{plot}
-\protect\hypertarget{plot-1}{}
 \includegraphics{slide_files/figure-beamer/unnamed-chunk-9-1.pdf}
-\end{frame}
 
-\begin{frame}{plot}
-\protect\hypertarget{plot-2}{}
-\end{frame}
-
-\begin{frame}{plot}
-\protect\hypertarget{plot-3}{}
 \includegraphics{slide_files/figure-beamer/unnamed-chunk-10-1.pdf}
 \end{frame}
 
 \begin{frame}{plot}
-\protect\hypertarget{plot-4}{}
+\protect\hypertarget{plot-1}{}
 \includegraphics{slide_files/figure-beamer/unnamed-chunk-11-1.pdf}
 \end{frame}
 
 \begin{frame}{plot}
-\protect\hypertarget{plot-5}{}
+\protect\hypertarget{plot-2}{}
+\IfFileExists{./letsnotsee.jpg}{\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-3}{}
 \includegraphics{slide_files/figure-beamer/unnamed-chunk-12-1.pdf}
 \end{frame}
 
 \begin{frame}{plot}
-\protect\hypertarget{plot-6}{}
+\protect\hypertarget{plot-4}{}
 \includegraphics{slide_files/figure-beamer/unnamed-chunk-13-1.pdf}
 \end{frame}
 
 \begin{frame}{plot}
-\protect\hypertarget{plot-7}{}
+\protect\hypertarget{plot-5}{}
 \includegraphics{slide_files/figure-beamer/unnamed-chunk-14-1.pdf}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-6}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-15-1.pdf}
+\end{frame}
+
+\begin{frame}{plot}
+\protect\hypertarget{plot-7}{}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-16-1.pdf}
 \end{frame}
 
 \begin{frame}{Simpson's Paradox}
@@ -463,7 +613,7 @@ data\_4 & 9 & 11 & 7.500909 & 4.123249 & 0.8165214 \\
 
 \begin{frame}{quiz:How many millions are in a trillion?}
 \protect\hypertarget{quizhow-many-millions-are-in-a-trillion}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-15-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-17-1.pdf}
 \end{frame}
 
 \begin{frame}{quiz:How many millions are in a trillion?}
@@ -485,17 +635,17 @@ data\_4 & 9 & 11 & 7.500909 & 4.123249 & 0.8165214 \\
 
 \begin{frame}{pie chart}
 \protect\hypertarget{pie-chart}{}
-\includegraphics[height=8cm]{slide_files/figure-beamer/unnamed-chunk-17-1}
+\includegraphics[height=8cm]{slide_files/figure-beamer/unnamed-chunk-19-1}
 \end{frame}
 
 \begin{frame}{substitute for a pie chart}
 \protect\hypertarget{substitute-for-a-pie-chart}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-18-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-20-1.pdf}
 \end{frame}
 
 \begin{frame}{substitute for a pie chart}
 \protect\hypertarget{substitute-for-a-pie-chart-1}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-19-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-21-1.pdf}
 \end{frame}
 
 \begin{frame}[fragile]{substitute for a pie chart}
@@ -508,58 +658,12 @@ data\_4 & 9 & 11 & 7.500909 & 4.123249 & 0.8165214 \\
 ## generated.
 \end{verbatim}
 
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-20-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-22-1.pdf}
 \end{frame}
 
 \begin{frame}{quiz:How many millions are in a trillion?}
 \protect\hypertarget{quizhow-many-millions-are-in-a-trillion-2}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-21-1.pdf}
-\end{frame}
-
-\begin{frame}{quiz:whaddayathink?}
-\protect\hypertarget{quizwhaddayathink}{}
-\Huge
-
-有病率 0.8\%
-\end{frame}
-
-\begin{frame}{quiz:whaddayathink?}
-\protect\hypertarget{quizwhaddayathink-1}{}
-\Large
-
-その検査は\ldots{}
-\end{frame}
-
-\begin{frame}{quiz:whaddayathink?}
-\protect\hypertarget{quizwhaddayathink-2}{}
-\Large
-
-\begin{itemize}[<+->]
-\tightlist
-\item
-  \textbullet{}\hspace{2pt}病気のとき陽性になる確率は99.0\%
-\item
-  \textbullet{}\hspace{2pt}病気でないとき陰性になる確率は97.0\%
-\end{itemize}
-\end{frame}
-
-\begin{frame}{quiz:whaddayathink?}
-\protect\hypertarget{quizwhaddayathink-3}{}
-\Huge
-
-\begin{itemize}[<+->]
-\item
-  その検査を受けました
-\item
-  → 陽性
-\end{itemize}
-\end{frame}
-
-\begin{frame}{quiz:whaddayathink?}
-\protect\hypertarget{quizwhaddayathink-4}{}
-\Huge
-
-実際に病気にかかっている確率は??
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-23-1.pdf}
 \end{frame}
 
 \begin{frame}[fragile]{Slide with R Output}
@@ -625,28 +729,14 @@ time will be great, while the discipline of setting out the real points
 concisely will prove an aid to clearer thinking.
 \end{frame}
 
-\begin{frame}{Slide with Plot}
-\protect\hypertarget{slide-with-plot}{}
-\includegraphics{slide_files/figure-beamer/pressure-1.pdf}
-\end{frame}
-
 \begin{frame}{tohoho}
 \protect\hypertarget{tohoho}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-25-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-26-1.pdf}
 \end{frame}
 
 \begin{frame}{tohoho}
 \protect\hypertarget{tohoho-1}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-26-1.pdf}
-\end{frame}
-
-\begin{frame}[fragile]{tohoho}
-\protect\hypertarget{tohoho-2}{}
-\begin{figure}
-\centering
-\includegraphics{slide_files/figure-beamer/plot-sample-1.pdf}
-\caption{\texttt{ggplot2} によるグラフ}
-\end{figure}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-27-1.pdf}
 \end{frame}
 
 \end{document}
