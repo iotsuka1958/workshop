@@ -38,9 +38,9 @@ library(ragg)
 
 \Huge
 
-- 予算の会議
-- ある事業について
-- どんな成果?
+- \textbullet{}\hspace{3pt}予算の会議
+- \textbullet{}\hspace{3pt}ある事業について
+- \textbullet{}\hspace{3pt}どんな成果?
 
 # a beautiful story
 
@@ -49,17 +49,10 @@ library(ragg)
 # evidence-based policy-making
 \Huge
 
-- 思いだけでは進まない
-- dataを活用しよう
-
-# evidence-based policy-making
-\Huge
-
-\begin{itemize}
-\item \textbullet{}\hspace{2pt}思いだけでは進まない
-\pause
-\item \textbullet{}\hspace{2pt}dataを活用しよう
-\end{itemize}
+-  \textbullet{}\hspace{3pt}思いだけでは進まない
+-  \textbullet{}\hspace{3pt}客観的な根拠
+\bigskip
+- \mbox{}\hfill{}{\textrightarrow{}\,\,{}}dataの活用
 
 
 # quiz:whaddayathink?
@@ -97,6 +90,35 @@ library(ragg)
 実際に病気である確率は??
 
 
+
+```{r}
+prevalence <- .8    #有病率
+sensitivity <-  90  #感度
+specificity <-  93  #特異度
+
+precision <- function(x, y, z){
+  x * y / (x * y + (100 - x) * (100 - z))
+}
+
+accuracy <- function(x, y, z){
+  (x * y + (100 - x) * z) / 10000
+}
+```
+
+
+# answer
+
+\IfFileExists{./flowchart.pdf}{\includegraphics[height=.9\textheight]{./flowchart.pdf}}{\relax}
+
+
+
+
+# answer
+\begin{center}\Huge
+\[
+\frac{9}{9 + 99}=0.083333\ldots{}
+\]
+\end{center}
 
 # answer
 
@@ -145,33 +167,158 @@ library(ragg)
 \end{tikzpicture}%
 }
 
-# answer
-\begin{center}\Huge
-$\frac{9}{9 + 99}=0.083333$
-\end{center}
 
-```{r}
-prevalence <- .8    #有病率
-sensitivity <-  90  #感度
-specificity <-  93  #特異度
 
-precision <- function(x, y, z){
-  x * y / (x * y + (100 - x) * (100 - z))
-}
 
-accuracy <- function(x, y, z){
-  (x * y + (100 - x) * z) / 10000
-}
+# research
+
+\LARGE
+
+- \textbullet ある町
+- \textbullet\hspace{1pt} 4つの学校
+- \textbullet 同じテスト
+
+
+# research
+
+\LARGE
+
+
+- 　\textbullet 家庭での学習時間
+- 　\textbullet 実際の点数
+
+# hypothethis
+
+\LARGE
+
+学習時間と点数に関係があるでしょうか
+
+あるとしたらどういう関係が\ldots
+
+# plot
+
+```{r echo=FALSE}
+df_base <- iris %>%
+  janitor::clean_names() %>%
+  as_tibble() %>% 
+  filter(species == "versicolor") %>% 
+  rename("time" = sepal_length,
+         "point" = petal_length,
+         "school" = species)
+```
+
+```{r echo=FALSE}
+df_A <- df_base %>% 
+  mutate(time = time - 3, point = point + .75, school = "school_A")
+
+df_B <- df_A %>% 
+  mutate(time = time -.45, point = point + .75, school = "school_B")
+
+df_C <- df_B %>% 
+  mutate(time = time -.45, point = point + .75, school = "school_C")
+
+df_D <- df_C %>% 
+  mutate(time = time -.45, point = point + .75, school = "school_D")
+```
+
+
+
+```{r echo=FALSE}
+q <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
+  ggplot(aes(time, point * 10)) +
+  geom_jitter(width = .8, height = .8, alpha = .5, size = 2) +
+  labs(x = "time spent studying", 
+       y = "score")
+       
+q
+```
+
+
+# plot
+
+
+
+```{r echo=FALSE, message=FALSE}
+q +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+# plot
+
+\IfFileExists{./letsnotsee.jpg}{\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax}
+
+
+# plot
+
+
+
+```{r echo=FALSE}
+q +
+  aes(colour = school) +
+  scale_color_viridis_d(name = "")
 ```
 
 
 
 
+# plot
 
 
 
+```{r echo=FALSE}
+q +
+  aes(colour = school) +
+  scale_color_viridis_d(guide = "none") +
+  facet_wrap(~school)
+```
+
+# plot
 
 
+
+```{r echo=FALSE}
+q +
+  aes(colour = school) +
+  scale_color_viridis_d(guide = "none") +
+  facet_wrap(~school) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+# plot
+
+
+
+```{r echo=FALSE}
+q +
+  aes(colour = school) +
+  scale_color_viridis_d(name = "") +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+# plot
+
+
+
+```{r echo=FALSE, message=FALSE}
+q +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+
+# Simpson's Paradox
+\large
+
+-  \textbullet{}\hspace{2pt}全体で見ると「勉強すればするほど成績がさがる」
+-  \textbullet{}\hspace{2pt}学校ごとに見ると「勉強すればするほど成績があがる」
+
+\normalsize
+
+
+# tebiki
+
+\IfFileExists{./tebiki.jpg}{\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
 
 
 
@@ -348,164 +495,6 @@ anscombe %>%
 平均値とか分散を計算してもよくわからない
 
 図示がだいじ
-
-
-
-
-# research
-
-\LARGE
-
-- \textbullet ある町
-- \textbullet\hspace{1pt} 4つの学校
-- \textbullet 同じテスト
-
-
-# research
-
-\LARGE
-
-
-- 生徒対象に調査
-- 　\textbullet テスト勉強にあてた時間
-- 　\textbullet 実際の点数
-
-# hypothethis
-
-\LARGE
-
-勉強時間と点数に関係があるでしょうか
-
-あるとしたらどういう関係が\ldots
-
-# plot
-
-```{r echo=FALSE}
-df_base <- iris %>%
-  janitor::clean_names() %>%
-  as_tibble() %>% 
-  filter(species == "versicolor") %>% 
-  rename("time" = sepal_length,
-         "point" = petal_length,
-         "school" = species)
-```
-
-```{r echo=FALSE}
-df_A <- df_base %>% 
-  mutate(time = time - 3, point = point + .75, school = "school_A")
-
-df_B <- df_A %>% 
-  mutate(time = time -.45, point = point + .75, school = "school_B")
-
-df_C <- df_B %>% 
-  mutate(time = time -.45, point = point + .75, school = "school_C")
-
-df_D <- df_C %>% 
-  mutate(time = time -.45, point = point + .75, school = "school_D")
-```
-
-
-```{r echo=FALSE}
-p <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
-  ggplot(aes(time, point * 10)) + geom_point(alpha = .8) +
-  labs(x = "time spent studying", 
-       y = "score"
-       )
-p
-```
-
-
-
-```{r echo=FALSE}
-q <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
-  ggplot(aes(time, point * 10)) + geom_jitter(width = .8, height = .8, alpha = .8) +
-  labs(x = "time spent studying", 
-       y = "score")
-       
-q
-```
-
-
-# plot
-
-
-
-```{r echo=FALSE, message=FALSE}
-q +
-  geom_smooth(method = "lm", se = FALSE)
-```
-
-
-# plot
-
-\IfFileExists{./letsnotsee.jpg}{\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax}
-
-
-# plot
-
-
-
-```{r echo=FALSE}
-q +
-  aes(colour = school) +
-  scale_color_viridis_d(name = "")
-```
-
-
-
-
-# plot
-
-
-
-```{r echo=FALSE}
-q +
-  aes(colour = school) +
-  scale_color_viridis_d(guide = "none") +
-  facet_wrap(~school)
-```
-
-# plot
-
-
-
-```{r echo=FALSE}
-q +
-  aes(colour = school) +
-  scale_color_viridis_d(guide = "none") +
-  facet_wrap(~school) +
-  geom_smooth(method = "lm", se = FALSE)
-```
-
-# plot
-
-
-
-```{r echo=FALSE}
-q +
-  aes(colour = school) +
-  scale_color_viridis_d(name = "") +
-  geom_smooth(method = "lm", se = FALSE)
-```
-
-# plot
-
-
-
-```{r echo=FALSE, message=FALSE}
-q +
-  geom_smooth(method = "lm", se = FALSE)
-```
-
-
-
-# Simpson's Paradox
-\large
-
--  \textbullet{}\hspace{2pt}全体で見ると「勉強すればするほど成績がさがる」
--  \textbullet{}\hspace{2pt}学校ごとに見ると「勉強すればするほど成績があがる」
-
-\normalsize
 
 
 # quiz:How many millions are in a trillion?
