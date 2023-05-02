@@ -20,7 +20,7 @@ flowchart <- tibble(from = c("population\n1,000人",
 ### defining the layout
 ####################
 g <-  graph_from_data_frame(flowchart, directed = TRUE)
-coords <- layout_as_tree(g)
+coords <- igraph::layout_as_tree(g)
 colnames(coords) <-  c("x", "y")
 ####################
 ### adding attributes
@@ -29,7 +29,8 @@ output_df <-  as_tibble(coords) |>
   mutate(step = vertex_attr(g, "name"),
          label = gsub("\\d+$", "", step),
          x = x*1,
-         type = factor(c(1, 1, 1, 2, 1, 1, 2)))
+        type = factor(c(2, 2, 2, 1, 3, 3, 1)))
+#         type = factor(c(1, 4, 5, 2, 3, 3, 2)))
 ###################
 ### making the boxes
 ###################
@@ -77,14 +78,14 @@ p <-  p +
 ### coolour schemes
 ###################
 p = p + 
-  scale_fill_carto_d(palette = "Antique") +
-  scale_colour_carto_d(palette = "Antique")
+  rcartocolor::scale_fill_carto_d(palette = "Antique") +
+  rcartocolor::scale_colour_carto_d(palette = "Antique")
 ###################
 ### adding text
 ###################
 p <-  p + 
   labs(title = "どれくらい??",
-       caption = "有病率1%\n感度90%\n特異度90%") 
+       caption = "有病率   1%\n感度　 90%\n特異度 90%") 
 ###################
 ### editing themes
 ###################
@@ -95,9 +96,9 @@ p = p +
         plot.background = element_rect(colour = "#f2e4c1", fill = "#f2e4c1"),
         panel.background = element_rect(colour = "#f2e4c1", fill = "#f2e4c1"),
         plot.title = element_text(family = "Meiryo", hjust = 0, face = "bold",
-                                  size = 25, color = "#585c45",
+                                  size = 20, color = "#585c45",
                                   margin = margin(t = 10, r = 0, b = 10, l = 0)),
         plot.caption = element_text(family = "Meiryo", hjust = 0,
-                                    size = 10, color = "#585c45",
+                                    size = 12, color = "#585c45",
                                     margin = margin(t = 10)))
 
