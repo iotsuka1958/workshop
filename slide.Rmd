@@ -106,12 +106,37 @@ accuracy <- function(x, y, z){
 ```
 
 
-# answer
-
-\IfFileExists{./flowchart.pdf}{\includegraphics[height=.9\textheight]{./flowchart.pdf}}{\relax}
 
 
 
+
+# tree
+
+\scalebox{.88}{%
+\begin{tikzpicture}
+ \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm}};
+%\draw [help lines] (-6,0) grid (6,6);%(0,0)から(10,4)までの"細線の方眼"
+\node[block,fill=gray!10] (population) at (0,7) {population\\1,000人};
+\pause
+\node[block,fill=gray!10] (sick) at (-3.5,4) {sick\\10人};
+\draw [->] (population) to[out=-90, in=60] node[auto=right] {$1\%$} (sick); 
+\pause
+\node[block,fill=gray!10] (not_sick) at (3.5,4) {not sick\\990人};
+\draw [->] (population) to[out=-90, in=120]  node[auto=left] {$99\%$} (not_sick); 
+\pause
+\node[block,fill=red!10] (true_positive) at (-5,) {true positive\\9人};
+\draw [->] (sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_positive); 
+\pause
+\node[block,fill=gray!10] (false_negative) at (-2,1) {false negative\\1人};
+\draw [->] (sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_negative); 
+\pause
+\node[block,fill=gray!10] (true_negative) at (2,1) {true negative\\891人};
+\draw [->] (not_sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_negative); 
+\pause
+\node[block,fill=red!10] (false_positive) at (5,1) {false positive\\99人};
+\draw [->] (not_sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_positive); 
+ \end{tikzpicture}%
+}
 
 # answer
 \begin{center}\Huge
@@ -120,55 +145,56 @@ accuracy <- function(x, y, z){
 \]
 \end{center}
 
-# answer
+<!-- # answer -->
 
-- 有病率1\%, 感度90\%, 特異度90\%
+<!-- \IfFileExists{./flowchart.pdf}{\includegraphics[height=.9\textheight]{./flowchart.pdf}}{\relax} -->
 
-\bigskip
-\bigskip
+<!-- # answer -->
 
-- \hspace*{-25pt}\scalebox{.7}{%
-\begin{tikzpicture}
-[
-    level 1/.style={sibling distance=80mm},
-    level 2/.style={sibling distance=60mm},
-]
-	\node {1,000人}
-		child {
-        node {\begin{tabular}{c}病気\\10人\end{tabular}}
-		      child {node {%
-                       \begin{tabular}{c}
-                       9人\\(真陽性)
-                       \end{tabular} %
-                       }
-              }
-		      child {node {%
-		                   \begin{tabular}{c}
-                       1人\\(偽陰性)
-                       \end{tabular}%
-                       }
-                 }
-            }
-		child {
-		    node {\begin{tabular}{c}病気でない\\990人\end{tabular}}
-		      child {node {%
-		                   \begin{tabular}{c}
-                       891人\\(真陰性)
-                       \end{tabular}%
-            	  	     }
-              	}
-		      child {node {%
-                       \begin{tabular}{c}
-                       99人\\(偽陽性)
-                       \end{tabular}%
-                       }
-                }
-     	  	  };
-\end{tikzpicture}%
-}
+<!-- - 有病率1\%, 感度90\%, 特異度90\% -->
 
+<!-- \bigskip -->
+<!-- \bigskip -->
 
-
+<!-- - \hspace*{-25pt}\scalebox{.7}{% -->
+<!-- \begin{tikzpicture} -->
+<!-- [ -->
+<!--     level 1/.style={sibling distance=80mm}, -->
+<!--     level 2/.style={sibling distance=60mm}, -->
+<!-- ] -->
+<!-- 	\node {1,000人} -->
+<!-- 		child { -->
+<!--         node {\begin{tabular}{c}病気\\10人\end{tabular}} -->
+<!-- 		      child {node {% -->
+<!--                        \begin{tabular}{c} -->
+<!--                        9人\\(真陽性) -->
+<!--                        \end{tabular} % -->
+<!--                        } -->
+<!--               } -->
+<!-- 		      child {node {% -->
+<!-- 		                   \begin{tabular}{c} -->
+<!--                        1人\\(偽陰性) -->
+<!--                        \end{tabular}% -->
+<!--                        } -->
+<!--                  } -->
+<!--             } -->
+<!-- 		child { -->
+<!-- 		    node {\begin{tabular}{c}病気でない\\990人\end{tabular}} -->
+<!-- 		      child {node {% -->
+<!-- 		                   \begin{tabular}{c} -->
+<!--                        891人\\(真陰性) -->
+<!--                        \end{tabular}% -->
+<!--             	  	     } -->
+<!--               	} -->
+<!-- 		      child {node {% -->
+<!--                        \begin{tabular}{c} -->
+<!--                        99人\\(偽陽性) -->
+<!--                        \end{tabular}% -->
+<!--                        } -->
+<!--                 } -->
+<!--      	  	  }; -->
+<!-- \end{tikzpicture}% -->
+<!-- } -->
 
 # research
 
@@ -185,15 +211,13 @@ accuracy <- function(x, y, z){
 
 
 - 　\textbullet 家庭での学習時間
-- 　\textbullet 実際の点数
+- 　\textbullet 得点
 
 # hypothethis
 
 \LARGE
 
-学習時間と点数に関係があるでしょうか
-
-あるとしたらどういう関係が\ldots
+学習時間と得点の関係は??
 
 # plot
 
@@ -226,10 +250,14 @@ df_D <- df_C %>%
 ```{r echo=FALSE}
 q <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
   ggplot(aes(time, point * 10)) +
-  geom_jitter(width = .8, height = .8, alpha = .5, size = 2) +
+#  geom_jitter(width = .8, height = .8, alpha = .5, size = 2) +
+  geom_point(alpha = .75, size = 2) +
   labs(x = "time spent studying", 
        y = "score")
-       
+```
+
+
+```{r}
 q
 ```
 

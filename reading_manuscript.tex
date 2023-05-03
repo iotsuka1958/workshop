@@ -18,7 +18,7 @@
 \usepackage{niceframe}
 \usepackage{multicol}
 \usepackage{bxwareki}%%%和暦
-\usepackage{mymacros}
+%\usepackage{mymacros}
 %%%%%%%%%%%%%%%%%%%%%%
 \usepackage{ascmac}
 \usepackage{booktabs}%%%%%tabularの横線の改良\toprule\midrule\bottomrule
@@ -160,7 +160,7 @@ $8.\dot{3}\%$
 皆さんはどうでしたでしょうか。
 直感に反するなとおもった方がいるかもしれません。
 
-%\Tree [ .1000人 [.有病者8人 真陽性7.2人 偽陰性.8人]%
+%\Tree [ .1000人 [.有病者8人 真陽性7.2人 偽陰性.8人]%j
 %[ .無病者922人 真陰性922.56人 擬陽性69.44人] ]
 
 \bigskip
@@ -193,41 +193,49 @@ $990*.1=99人$\\(疑陽性)
 \end{tikzpicture}
 
 
-
-  \scalebox{.66}{%
 \begin{tikzpicture}
-[
-    level 1/.style={sibling distance=80mm},
-    level 2/.style={sibling distance=60mm},
-]
-	\node {1,000人}
-		child {
-        node {\begin{tabular}{c}病気\\10人\end{tabular}}
-		    child {node {%
-\begin{tabular}{c}
-9人\\(真陽性)
-\end{tabular}
-}}
-		    child {node {%
-		    \begin{tabular}{c}
-1人\\(偽陰性)
-\end{tabular}}}
-                 }
-		child {
-		    node {\begin{tabular}{c}病気でない\\990人\end{tabular}}
-		    child {node {%
-		    \begin{tabular}{c}
-891人\\(真陰性)
-\end{tabular}
-		    }}
-		    child {node {%
-\begin{tabular}{c}
-99人\\(偽陽性)
-\end{tabular}%
-}}
-		};
-\end{tikzpicture}%
-}
+    \tikzset{block/.style={rectangle, fill=cyan!10, text width=2cm, text centered, rounded corners, minimum height=1.5cm}};
+    \node[block] {population} [level distance=3cm, level 1/.style={sibling distance=80mm}, level 2/.style={sibling distance=40mm}, edge from parent/.style={->,draw}]
+        child{ node[block] {sick}
+ }
+        child{ node[block] {not sick}
+              child{ node[block]{piyo} }
+              child{ node[block]{bar} }
+ };
+ \end{tikzpicture}
+
+\begin{tikzpicture}
+    \tikzset{block/.style={rectangle, fill=cyan!10, text width=2cm, text centered, rounded corners, minimum height=1.5cm}};
+    \node[block] {population} [level distance=3cm, level 1/.style={sibling distance=80mm}, level 2/.style={sibling distance=40mm}, edge from parent/.style={->,draw}]
+        child{ node[block] {sick}
+              child{ node[block]{hoge} }
+              child{ node[block]{fuga} }
+ }
+        child{ node[block] {not sick}
+              child{ node[block]{piyo} }
+              child{ node[block]{bar} }
+ };
+ \end{tikzpicture}
+
+
+\begin{tikzpicture}
+ \tikzset{block/.style={rectangle, fill=cyan!10, text width=22mm, text centered, rounded corners, minimum height=1.5cm}};
+ \tikzset{another_block/.style={rectangle, fill=red!10, text width=22mm, text centered, rounded corners, minimum height=1.5cm}};
+\draw [help lines] (-6,0) grid (6,6);%(0,0)から(10,4)までの"細線の方眼"
+\node[block] (population) at (0,6) {population\\1,000};
+\node[block] (sick) at (-3.5,4) {sick};
+\node[block] (not_sick) at (3.5,4) {not sick};
+\node[another_block] (true_positive) at (-5,) {true positive};
+\node[block] (false_negative) at (-2,1) {false negative};
+\node[block] (true_negative) at (2,1) {true negative};
+\node[another_block] (false_positive) at (5,1) {false positive};
+\draw [->] (population) -- node[auto=right] {$1\%$} (sick); 
+\draw [->] (population) -- node[auto=left] {$99\%$} (not_sick); 
+\draw [->] (sick) -- node[auto=right] {$90\%$} (true_positive); 
+\draw [->] (sick) -- node[auto=left] {$10\%$} (false_negative); 
+\draw [->] (not_sick) -- node[auto=right] {$90\%$} (true_negative); 
+\draw [->] (not_sick) -- node[auto=left] {$10\%$} (false_positive); 
+ \end{tikzpicture}
 
 
 
@@ -499,7 +507,7 @@ wordよいうソフトウェアにそこまで求めること自体がまちが�
 第2次世界大戦で壊滅の危機に瀕していた英国の宰相であった Sir Winston Churchill
 のことばです。
 
-\includegraphics[height=\textheight]{churchill_memo.jpg}
+\IfFileExists{churchill_memo.jpg}{\includegraphics[height=\textheight]{churchill_memo.jpg}}{\relax}
 
 出だしだけ確認します。
 
@@ -526,9 +534,65 @@ To do our work, we all have to read a mass of papers.
 一定のレベルを超えた文書を
 wordで作ることなど通常ありません。
 
+\begin{tikzpicture}
+\draw[help lines] (-5,0) grid (5,-10);
+\node (plus)  at ( 0, 0) {$+$};
+\node (div)   at (-2,-1) {$\div$};
+\node (times) at ( 2,-1) {$\times$};
+\node (8)     at (-3,-2) {$8$};
+\node (2)     at (-1,-2) {$2$};
+\node (1)     at ( 1,-2) {$1$};
+\node (6)     at ( 3,-2) {$6$};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[rotate=90,x={(-1,0)}]
+\node (plus)  at ( 0, 0) {$+$};
+\node (div)   at (-2,-1) {$\div$};
+\node (times) at ( 2,-1) {$\times$};
+\node (8)     at (-3,-2) {$8$};
+\node (2)     at (-1,-2) {$2$};
+\node (1)     at ( 1,-2) {$1$};
+\node (6)     at ( 3,-2) {$6$};
+\draw (div) -- (plus) -- (times);
+\draw (8) -- (div) -- (2);
+\draw (1) -- (times) -- (6);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node (plus)  at ( 0, 0) {$+$};
+\node (div)   at (-2,-1) {$\div$};
+\node (times) at ( 2,-1) {$\times$};
+\node (8)     at (-3,-2) {$8$};
+\node (2)     at (-1,-2) {$2$};
+\node (1)     at ( 1,-2) {$1$};
+\node (6)     at ( 3,-2) {$6$};
+\draw (div) -- (plus) -- (times);
+\draw (8) -- (div) -- (2);
+\draw (1) -- (times) -- (6);
+\end{tikzpicture}
+
+\begin{tikzpicture}[
+  level 1/.style={sibling distance=30mm},
+  level 2/.style={sibling distance=10mm},
+  enzanshi/.style={circle,draw},
+  suuchi/.style={rectangle,draw}
+]
+\node (myexpr) [enzanshi] {$+$}
+  child { node[enzanshi] {$\div$}
+    child { node[suuchi] {$8$} }
+    child { node[suuchi] {$2$} }
+  }
+  child { node[enzanshi] {$\times$}
+    child { node[suuchi] {$1$} }
+    child { node[suuchi] {$6$} }
+  };
+\draw (myexpr-1) node[above=1.5ex,red] {$4$};
+\draw (myexpr-1-2) node[right=0.5em,red] {two};
+\end{tikzpicture}
+
 
 
 \end{document}
-
 
 
