@@ -31,6 +31,7 @@ library(readxl)
 library(viridis)
 library(gt)
 library(ragg)
+library(ggthemes)
 ```
 
 
@@ -211,13 +212,13 @@ accuracy <- function(x, y, z){
 
 
 - 　\textbullet 家庭での学習時間
-- 　\textbullet 得点
+- 　\textbullet 正答率
 
 # hypothethis
 
 \LARGE
 
-学習時間と得点の関係は??
+学習時間と正答率に関係はあるのか??
 
 # plot
 
@@ -250,14 +251,15 @@ df_D <- df_C %>%
 ```{r echo=FALSE}
 q <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
   ggplot(aes(time, point * 10)) +
-#  geom_jitter(width = .8, height = .8, alpha = .5, size = 2) +
-  geom_point(alpha = .75, size = 2) +
+  geom_jitter(width = .8, height = .8, alpha = .7, size = 2) +
+#  geom_point(alpha = .75, size = 2) +
   labs(x = "time spent studying", 
        y = "score")
 ```
 
 
 ```{r}
+set.seed(628)
 q
 ```
 
@@ -267,6 +269,7 @@ q
 
 
 ```{r echo=FALSE, message=FALSE}
+set.seed(628)
 q +
   geom_smooth(method = "lm", se = FALSE)
 ```
@@ -282,9 +285,11 @@ q +
 
 
 ```{r echo=FALSE}
+set.seed(628)
 q +
   aes(colour = school) +
-  scale_color_viridis_d(name = "")
+#  scale_color_viridis_d(name = "") 
+  ggthemes::scale_colour_few()
 ```
 
 
@@ -295,9 +300,10 @@ q +
 
 
 ```{r echo=FALSE}
+set.seed(628)
 q +
   aes(colour = school) +
-  scale_color_viridis_d(guide = "none") +
+  scale_color_few(guide = "none") +
   facet_wrap(~school)
 ```
 
@@ -306,9 +312,10 @@ q +
 
 
 ```{r echo=FALSE}
+set.seed(628)
 q +
   aes(colour = school) +
-  scale_color_viridis_d(guide = "none") +
+  scale_color_few(guide = "none") +
   facet_wrap(~school) +
   geom_smooth(method = "lm", se = FALSE)
 ```
@@ -318,9 +325,10 @@ q +
 
 
 ```{r echo=FALSE}
+set.seed(628)
 q +
   aes(colour = school) +
-  scale_color_viridis_d(name = "") +
+  scale_color_few(guide = "none") +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
@@ -329,6 +337,7 @@ q +
 
 
 ```{r echo=FALSE, message=FALSE}
+set.seed(628)
 q +
   geom_smooth(method = "lm", se = FALSE)
 ```
