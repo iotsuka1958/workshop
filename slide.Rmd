@@ -45,12 +45,13 @@ library(ggthemes)
 
 # a beautiful story
 
-\IfFileExists{kids.jpg}{\includegraphics{kids.jpg}}{\relax}
+\IfFileExists{kids.jpg}{\centering\includegraphics{kids.jpg}}{\relax}
 
 # evidence-based policy-making
 \Huge
 
 -  \textbullet{}\hspace{3pt}思いだけでは進まない
+\bigskip
 -  \textbullet{}\hspace{3pt}客観的な根拠
 \bigskip
 - \mbox{}\hfill{}{\textrightarrow{}\,\,{}}dataの活用
@@ -142,7 +143,8 @@ accuracy <- function(x, y, z){
 # answer
 \begin{center}\Huge
 \[
-\frac{9}{9 + 99}=0.083333\ldots{}
+\frac{9}{9 + 99}=0.083333
+\ldots
 \]
 \end{center}
 
@@ -345,17 +347,44 @@ q +
 
 
 # Simpson's Paradox
-\large
+\LARGE
 
--  \textbullet{}\hspace{2pt}全体で見ると「勉強すればするほど成績がさがる」
--  \textbullet{}\hspace{2pt}学校ごとに見ると「勉強すればするほど成績があがる」
+-  \textbullet{}\hspace{2pt}全体では\par
+「勉強するほど成績がさがる」
+\bigskip
+-  \textbullet{}\hspace{2pt}学校ごとでは\par
+「勉強するほど成績があがる」
 
 \normalsize
 
 
+# what is important
+
+\Huge
+
+-  \textbullet{}\hspace{2pt}本質的なこと
+\bigskip
+-  \textbullet{}\hspace{2pt}体裁
+\bigskip
+-  \textbullet{}\hspace{2pt}スピード感
+
+
+
 # tebiki
 
-\IfFileExists{./tebiki.jpg}{\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
+\vspace*{-20pt}
+\IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
+
+
+# quiz
+
+\Huge
+
+- 「又は」or「または」
+\bigskip
+- 「子供」or「子ども」
+\bigskip
+- 「手引」or「手引き」
 
 
 
