@@ -261,7 +261,7 @@ q <- df_A %>% bind_rows(df_B, df_C, df_D) %>%
 
 
 ```{r}
-set.seed(628)
+set.seed(1)
 q
 ```
 
@@ -271,7 +271,7 @@ q
 
 
 ```{r echo=FALSE, message=FALSE}
-set.seed(628)
+set.seed(1)
 q +
   geom_smooth(method = "lm", se = FALSE)
 ```
@@ -287,7 +287,7 @@ q +
 
 
 ```{r echo=FALSE}
-set.seed(628)
+set.seed(1)
 q +
   aes(colour = school) +
 #  scale_color_viridis_d(name = "") 
@@ -302,7 +302,7 @@ q +
 
 
 ```{r echo=FALSE}
-set.seed(628)
+set.seed(1)
 q +
   aes(colour = school) +
   scale_color_few(guide = "none") +
@@ -314,7 +314,7 @@ q +
 
 
 ```{r echo=FALSE}
-set.seed(628)
+set.seed(1)
 q +
   aes(colour = school) +
   scale_color_few(guide = "none") +
@@ -327,7 +327,7 @@ q +
 
 
 ```{r echo=FALSE}
-set.seed(628)
+set.seed(1)
 q +
   aes(colour = school) +
   scale_color_few(guide = "none") +
@@ -339,7 +339,7 @@ q +
 
 
 ```{r echo=FALSE, message=FALSE}
-set.seed(628)
+set.seed(1)
 q +
   geom_smooth(method = "lm", se = FALSE)
 ```
@@ -356,6 +356,15 @@ q +
 「勉強するほど成績があがる」
 
 \normalsize
+
+
+# tebiki
+
+\vspace*{-20pt}
+\IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
+
+
+
 
 
 # what is important
@@ -386,6 +395,16 @@ q +
 \bigskip
 - 「手引」or「手引き」
 
+# attraction
+
+
+
+\vspace*{-4pt}
+\IfFileExists{./bento.jpg}{\centering\scalebox{.85}{\includegraphics[width=\textheight]{bento.jpg}}}{\relax}
+
+
+
+# last but not least
 
 
 
@@ -759,4 +778,42 @@ df_likert %>% HH::likert(school~., ., as.percent = TRUE,
            xlab="percentage", ylab="School") 
 ```
 
+
+## 誕生日問題
+
+閏年は無視。
+k人の集団で同じ誕生日の人がいるかどうか。
+
+### 少なくとも1組はいる確率
+
+```{r}
+birthday <- function(k){
+     {replicate(1000, {
+         len <- sample(365, k, replace = TRUE) |> unique() |> length()
+         k - len
+     }) > 0} |> mean()
+ }
+```
+
+
+
+```{r}
+Vectorize(birthday)(1:40)
+```
+
+### 同じ誕生日の
+
+```{r}
+birthday_daburi <- function(k){
+     {replicate(1000, {
+         len <- sample(365, k, replace = TRUE) |> unique() |> length()
+         k - len
+     }) } |> mean()
+ }
+```
+
+
+```{r}
+Vectorize(birthday_daburi)(1:40)
+```
 
