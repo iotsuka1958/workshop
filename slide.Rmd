@@ -213,7 +213,7 @@ Martin Grandjean(vector), McGeddon(picture), Cameron Moll(concept)
 
 \vspace{-5pt}
 
-This work is licensed under under the Creative Commons Attribution-Share Alike 4.0 International license.
+This work is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.
 
 
 
@@ -382,8 +382,140 @@ q +
 \IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
 
 
+# Sir Winston Spencer Churchill
+
+\raggedleft\Huge
+
+\raisebox{100pt}{\rotatebox{30}{\textcolor{white}{Brevity}}}　　
+\IfFileExists{Sir_Winston_Churchil.jpg}{\scalebox{.75}{\includegraphics{Sir_Winston_Churchil.jpg}}}{\relax}
 
 
+\tiny
+
+\raggedleft
+The Roaring Lion(Yousuf Karsh)
+\vspace{-5pt}
+
+This work is licensed under the Creative Commons Attribution 2.0 Generic License.
+
+# Sir Winston Spencer Churchill
+
+\raggedleft\Huge
+
+\raisebox{100pt}{\rotatebox{30}{\textcolor{black}{Brevity}}}　　
+\IfFileExists{Sir_Winston_Churchil.jpg}{\scalebox{.75}{\includegraphics{Sir_Winston_Churchil.jpg}}}{\relax}
+
+
+\tiny
+
+\raggedleft
+The Roaring Lion(Yousuf Karsh)
+\vspace{-5pt}
+
+This work is licensed under the Creative Commons Attribution 2.0 Generic License.
+
+
+
+
+# Brevity
+
+\centering
+\vspace*{-21.5pt}
+\IfFileExists{churchill_memo.jpg}{\scalebox{1.025}{\includegraphics{churchill_memo.jpg}}}{\relax}
+
+
+# Brevity
+\Large
+
+To do our work, we all have to read a mass of papers. 
+Nearly all of them are far too long.\par
+
+\vfill
+\Huge
+
+\rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}大量の書類\\長すぎる\end{tabular}}}}
+
+\vfill
+
+# Brevity
+\Large
+
+To do our work, we all have to read \textcolor{olive}{a mass of papers}. 
+Nearly all of them are \textcolor{olive}{far too long}.\par
+
+
+\vfill
+\Huge
+
+\rotatebox{15}{\scalebox{1.6}{\textcolor{olive}{\begin{tabular}{l}大量の書類\\長すぎる\end{tabular}}}}
+
+\vfill
+
+# Brevity
+\Large
+
+
+This wastes time, 
+while energy has to be spent in looking for the essential points.\par
+
+\vfill\Huge
+
+\rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}時間のむだ\\要点がわからない\end{tabular}}}}
+
+\vfill
+
+# Brevity
+\Large
+
+
+This \textcolor{olive}{wastes time}, 
+while energy has to be spent in looking for \textcolor{olive}{the essential points}.\par
+
+\vfill\Huge
+
+\rotatebox{15}{\scalebox{1.6}{\textcolor{olive}{\begin{tabular}{l}時間のむだ\\要点がわからない\end{tabular}}}}
+
+\vfill
+
+
+# Brevity
+\Large
+
+
+I ask my colleagues and their staffs to see to it that their Reports are shorter.
+
+
+\vfill\Huge
+
+\rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}報告書を短く\end{tabular}}}}
+
+\vfill
+
+# Brevity
+\Large
+
+
+I ask my colleagues and their staffs to see to it that \textcolor{olive}{their Reports are shorter}.
+
+
+\vfill\Huge
+
+\rotatebox{15}{\scalebox{1.6}{\textcolor{olive}{\begin{tabular}{l}報告書を短く\end{tabular}}}}
+
+\vfill
+
+
+# Brevity
+\Large
+
+
+\begin{itemize}
+ \item[\textbullet] 歯切れよく言い切れ
+ \item[\textbullet] もってまわったいいまわしはやめろ
+ \item[\textbullet] 詳細な分析は付録にしろ
+ \item[\textbullet] 見出しだけのメモ---口頭で補うのもあり
+ \item[\textbullet] 乱暴な表現でかまわない
+\end{itemize}
 
 # what is important
 
@@ -721,11 +853,7 @@ summary(cars)
 ```
 
 
-# 文書・資料
 
-To do our work, we all have to read a mass of papers. Nearly all of them are far too long. This wastes time, while energy has to be spent in looking for the essential points.
-
-I ask my colleagues and their staffs to see to it that their Reports are shorter.
 
 
 # 文書・資料
