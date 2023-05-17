@@ -39,9 +39,11 @@ library(ggthemes)
 
 \Huge
 
-- \textbullet{}\hspace{3pt}予算の会議
-- \textbullet{}\hspace{3pt}ある事業について
-- \textbullet{}\hspace{3pt}どんな成果?
+\begin{itemize}
+\item[\textbullet] 予算の会議\pause
+\item[\textbullet] ある事業について\pause
+\item[\textbullet] どんな成果?
+\end{itemize}
 
 # a beautiful story
 
@@ -50,14 +52,17 @@ library(ggthemes)
 # evidence-based policy-making
 \Huge
 
--  \textbullet{}\hspace{3pt}思いだけでは進まない
-\bigskip
--  \textbullet{}\hspace{3pt}客観的な根拠
-\bigskip
-- \mbox{}\hfill{}{\textrightarrow{}\,\,{}}dataの活用
+\begin{itemize}
+\item[\textbullet] 思いだけでは進まない
+\pause
+\item[\textbullet] 客観的な根拠
+\end{itemize}
+\pause
+\vspace*{-30pt}
+\hspace*{18pt}\rotatebox{13}{\scalebox{2}{\textcolor{gray}{dataの活用!}}}
 
 
-# quiz:whaddayathink?
+# case study 1
 
 \Huge
 
@@ -68,14 +73,14 @@ library(ggthemes)
 
 
 
-# quiz:whaddayathink?
+# case study 1
 
 \LARGE
 
 \begin{itemize}
 \item どんな病気??
 \pause
-\item 　\textbullet{}\hspace{2pt}1\%の人がこの病気にかかってる
+\item 　\textbullet{}\hspace{2pt}人口の1\%がこの病気
 \pause
 \item 
 \item どんな検査??
@@ -85,7 +90,7 @@ library(ggthemes)
 \item 　\textbullet{}\hspace{2pt}病気でないなら90\%の確率で陰性
 \end{itemize}
 
-# quiz:whaddayathink?
+# case study 1
 
 \Huge
 
@@ -112,7 +117,7 @@ accuracy <- function(x, y, z){
 
 
 
-# tree
+# case study 1
 
 \scalebox{.88}{%
 \begin{tikzpicture}
@@ -140,7 +145,7 @@ accuracy <- function(x, y, z){
  \end{tikzpicture}%
 }
 
-# answer
+# case study 1
 \begin{center}\Huge
 \[
 \frac{9}{9 + 99}=0.083333
@@ -148,59 +153,10 @@ accuracy <- function(x, y, z){
 \]
 \end{center}
 
-<!-- # answer -->
-
-<!-- \IfFileExists{./flowchart.pdf}{\includegraphics[height=.9\textheight]{./flowchart.pdf}}{\relax} -->
-
-<!-- # answer -->
-
-<!-- - 有病率1\%, 感度90\%, 特異度90\% -->
-
-<!-- \bigskip -->
-<!-- \bigskip -->
-
-<!-- - \hspace*{-25pt}\scalebox{.7}{% -->
-<!-- \begin{tikzpicture} -->
-<!-- [ -->
-<!--     level 1/.style={sibling distance=80mm}, -->
-<!--     level 2/.style={sibling distance=60mm}, -->
-<!-- ] -->
-<!-- 	\node {1,000人} -->
-<!-- 		child { -->
-<!--         node {\begin{tabular}{c}病気\\10人\end{tabular}} -->
-<!-- 		      child {node {% -->
-<!--                        \begin{tabular}{c} -->
-<!--                        9人\\(真陽性) -->
-<!--                        \end{tabular} % -->
-<!--                        } -->
-<!--               } -->
-<!-- 		      child {node {% -->
-<!-- 		                   \begin{tabular}{c} -->
-<!--                        1人\\(偽陰性) -->
-<!--                        \end{tabular}% -->
-<!--                        } -->
-<!--                  } -->
-<!--             } -->
-<!-- 		child { -->
-<!-- 		    node {\begin{tabular}{c}病気でない\\990人\end{tabular}} -->
-<!-- 		      child {node {% -->
-<!-- 		                   \begin{tabular}{c} -->
-<!--                        891人\\(真陰性) -->
-<!--                        \end{tabular}% -->
-<!--             	  	     } -->
-<!--               	} -->
-<!-- 		      child {node {% -->
-<!--                        \begin{tabular}{c} -->
-<!--                        99人\\(偽陽性) -->
-<!--                        \end{tabular}% -->
-<!--                        } -->
-<!--                 } -->
-<!--      	  	  }; -->
-<!-- \end{tikzpicture}% -->
-<!-- } -->
 
 
-# world war II
+
+# case study 2 --- world war II
 
 \raggedleft
 \IfFileExists{survivorship_bias.png}{\scalebox{.9}{\includegraphics{survivorship_bias.png}}}{\relax}
@@ -217,28 +173,31 @@ This work is licensed under the Creative Commons Attribution-Share Alike 4.0 Int
 
 
 
-# research
+# case study 3
 
-\LARGE
+\Huge
 
-- \textbullet ある町
-- \textbullet\hspace{1pt} 4つの学校
-- \textbullet 同じテスト
+\begin{itemize}
+\item[\textbullet] ある町
+\pause
+\item[\textbullet] 4つの学校
+\pause
+\item[\textbullet] 同じテスト
+\end{itemize}
 
+# case study 3
 
-# research
+\Huge
 
-\LARGE
+\begin{itemize}
+\item[\textbullet] 家庭での学習時間
+\pause
+\item[\textbullet] 正答率
+\end{itemize}
+\pause
+\vspace*{-55pt}
+\rotatebox{20}{\scalebox{2}{\textcolor{gray}{どんな関係?}}}
 
-
-- 　\textbullet 家庭での学習時間
-- 　\textbullet 正答率
-
-# hypothethis
-
-\LARGE
-
-学習時間と正答率に関係はあるのか??
 
 # plot
 
@@ -268,6 +227,7 @@ df_D <- df_C %>%
 
 
 
+
 ```{r echo=FALSE}
 q <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
   ggplot(aes(time, point * 10)) +
@@ -284,7 +244,7 @@ q
 ```
 
 
-# plot
+# case study 3
 
 
 
@@ -295,12 +255,12 @@ q +
 ```
 
 
-# plot
+# case study 3
 
 \IfFileExists{./letsnotsee.jpg}{\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax}
 
 
-# plot
+# case study 3
 
 
 
@@ -315,7 +275,7 @@ q +
 
 
 
-# plot
+# case study 3
 
 
 
@@ -327,7 +287,7 @@ q +
   facet_wrap(~school)
 ```
 
-# plot
+# case study 3
 
 
 
@@ -340,7 +300,7 @@ q +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-# plot
+# case study 3
 
 
 
@@ -352,7 +312,7 @@ q +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-# plot
+# case study 3
 
 
 
@@ -363,18 +323,23 @@ q +
 ```
 
 
-
-# Simpson's Paradox
+# case study 3
 \LARGE
 
--  \textbullet{}\hspace{2pt}全体では\par
+\begin{itemize}
+\item[\textbullet] 全体では\par
 「勉強するほど成績がさがる」
-\bigskip
--  \textbullet{}\hspace{2pt}学校ごとでは\par
+\bigskip\pause
+\item[\textbullet] 学校ごとでは\par
 「勉強するほど成績があがる」
+\end{itemize}
+
+# case study 3 --- Simpson's Paradox
+\LARGE
+
+全体と個々のグループでの傾向が異なる
 
 \normalsize
-
 
 # tebiki
 
@@ -463,6 +428,7 @@ while energy has to be spent in looking for the essential points.\par
 \rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}時間のむだ\\要点がわからない\end{tabular}}}}
 
 \vfill
+\mbox{}
 
 # Brevity
 \Large
@@ -506,15 +472,19 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 
 
 # Brevity
-\Large
+\LARGE
 
 
 \begin{itemize}
  \item[\textbullet] 歯切れよく言い切れ
- \item[\textbullet] もってまわったいいまわしはやめろ
- \item[\textbullet] 詳細な分析は付録にしろ
- \item[\textbullet] 見出しだけのメモ---口頭で補うのもあり
- \item[\textbullet] 乱暴な表現でかまわない
+   \begin{itemize}
+    \item もってまわったいいまわしはやめろ
+    \item 乱暴な表現でかまわない
+   \end{itemize} 
+   \pause
+  \item[\textbullet] 詳細な分析は付録にしろ
+   \pause
+  \item[\textbullet] 柱だけのメモを口頭で補うのもあり
 \end{itemize}
 
 # what is important
