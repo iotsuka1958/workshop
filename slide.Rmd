@@ -61,17 +61,25 @@ library(ggthemes)
 \vspace*{-30pt}
 \hspace*{18pt}\rotatebox{13}{\scalebox{2}{\textcolor{gray}{dataの活用!}}}
 
+# case study 1
+
 
 # case study 1
 
 \Huge
 
 
+\rotatebox{0}{\scalebox{2}{\textcolor{gray}{\begin{tabular}{l}病気の検査\end{tabular}}}}
 
-検査を受けました\pause{\textrightarrow{}\,\,{}陽性!!!}
+\vspace*{-48pt}
+\pause
+\rotatebox{20}{\scalebox{3.8}{\textcolor{red!30}{\begin{tabular}{l}\fbox{\fbox{陽性}}\end{tabular}}}}
 
+<!-- # case study 1 -->
 
+<!-- \Huge -->
 
+<!-- 検査を受けました\pause{\textrightarrow{}\,\,{}陽性!!!} -->
 
 # case study 1
 
@@ -82,7 +90,7 @@ library(ggthemes)
 \pause
 \item 　\textbullet{}\hspace{2pt}人口の1\%がこの病気
 \pause
-\item 
+\item
 \item どんな検査??
 \pause
 \item 　\textbullet{}\hspace{2pt}病気なら90\%の確率で陽性
@@ -99,9 +107,9 @@ library(ggthemes)
 
 
 ```{r}
-prevalence <- .8    #有病率
+prevalence <- 1    #有病率
 sensitivity <-  90  #感度
-specificity <-  93  #特異度
+specificity <-  90  #特異度
 
 precision <- function(x, y, z){
   x * y / (x * y + (100 - x) * (100 - z))
