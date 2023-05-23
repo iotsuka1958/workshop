@@ -220,17 +220,17 @@ df_base <- iris %>%
 ```
 
 ```{r echo=FALSE}
-df_A <- df_base %>% 
-  mutate(time = time - 3, point = point + .75, school = "school_A")
+df_D <- df_base %>% 
+  mutate(time = time - 3, point = point + .4, school = "school_D")
 
-df_B <- df_A %>% 
-  mutate(time = time -.45, point = point + .75, school = "school_B")
+df_C <- df_D %>% 
+  mutate(time = time -.25, point = point + .9, school = "school_C")
 
-df_C <- df_B %>% 
-  mutate(time = time -.45, point = point + .75, school = "school_C")
+df_B <- df_C %>% 
+  mutate(time = time -.25, point = point + .9, school = "school_B")
 
-df_D <- df_C %>% 
-  mutate(time = time -.45, point = point + .75, school = "school_D")
+df_A <- df_B %>% 
+  mutate(time = time -.25, point = point + .9, school = "school_A")
 ```
 
 
@@ -277,7 +277,7 @@ set.seed(1)
 q +
   aes(colour = school) +
 #  scale_color_viridis_d(name = "") 
-  ggthemes::scale_colour_few()
+  ggthemes::scale_colour_few(guide = "none")
 ```
 
 
@@ -359,7 +359,7 @@ q +
 
 \raggedleft\Huge
 
-\raisebox{100pt}{\rotatebox{30}{\textcolor{white}{Brevity}}}　　
+\raisebox{100pt}{\rotatebox{30}{\textcolor{white}{\scalebox{1.2}{Brevity}}}}　　
 \IfFileExists{Sir_Winston_Churchil.jpg}{\scalebox{.75}{\includegraphics{Sir_Winston_Churchil.jpg}}}{\relax}
 
 
@@ -375,7 +375,7 @@ This work is licensed under the Creative Commons Attribution 2.0 Generic License
 
 \raggedleft\Huge
 
-\raisebox{100pt}{\rotatebox{30}{\textcolor{black}{Brevity}}}　　
+\raisebox{100pt}{\rotatebox{30}{\textcolor{black}{\scalebox{1.2}{Brevity}}}}　　
 \IfFileExists{Sir_Winston_Churchil.jpg}{\scalebox{.75}{\includegraphics{Sir_Winston_Churchil.jpg}}}{\relax}
 
 
@@ -480,30 +480,29 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 
 
 # Brevity
-\LARGE
+\Huge
+
 
 
 \begin{itemize}
- \item[\textbullet] 歯切れよく言い切れ
-   \begin{itemize}
-    \item もってまわったいいまわしはやめろ
-    \item 乱暴な表現でかまわない
-   \end{itemize} 
-   \pause
-  \item[\textbullet] 詳細な分析は付録にしろ
-   \pause
-  \item[\textbullet] 柱だけのメモを口頭で補うのもあり
+\item \scalebox{1.3}{歯切れよくいいきれ}
+  \begin{itemize}
+  \item \pause
+  \item \scalebox{2}{\textbullet{}\myCrossedOut{red!60!gray}{冗長ないいまわし}}
+  \item \scalebox{2}{\textbullet{}乱暴な表現でよし}
 \end{itemize}
+\end{itemize}
+
 
 # what is important
 
 \Huge
 
--  \textbullet{}\hspace{2pt}本質的なこと
+-  \textbullet{}\hspace{2pt} 本質的なこと
 \bigskip
--  \textbullet{}\hspace{2pt}体裁
+-  \textbullet{}\hspace{2pt} 体裁
 \bigskip
--  \textbullet{}\hspace{2pt}スピード感
+-  \textbullet{}\hspace{2pt} スピード感
 
 
 

@@ -46,3 +46,10 @@
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{pxpgfmark} % remember picture を可能にする
+\usetikzlibrary{decorations,backgrounds,decorations.pathmorphing, shapes,positioning,fit,calc,spy}
+\newcommand*\myCrossedOut[2]{%
+  \tikz[baseline=(T.base)]
+    \node[draw=#1, ultra thick, shape=cross out, decorate,
+      inner sep=2pt, outer sep=0pt,
+      decoration={random steps, segment length=2pt, amplitude=0.4pt}]
+      (T) {#2};}

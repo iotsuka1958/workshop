@@ -185,6 +185,13 @@
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{pxpgfmark} % remember picture を可能にする
+\usetikzlibrary{decorations,backgrounds,decorations.pathmorphing, shapes,positioning,fit,calc,spy}
+\newcommand*\myCrossedOut[2]{%
+  \tikz[baseline=(T.base)]
+    \node[draw=#1, ultra thick, shape=cross out, decorate,
+      inner sep=2pt, outer sep=0pt,
+      decoration={random steps, segment length=2pt, amplitude=0.4pt}]
+      (T) {#2};}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -429,7 +436,7 @@ This work is licensed under the Creative Commons Attribution-Share Alike
 \protect\hypertarget{sir-winston-spencer-churchill}{}
 \raggedleft\Huge
 
-\raisebox{100pt}{\rotatebox{30}{\textcolor{white}{Brevity}}}　　
+\raisebox{100pt}{\rotatebox{30}{\textcolor{white}{\scalebox{1.2}{Brevity}}}}　　
 \IfFileExists{Sir_Winston_Churchil.jpg}{\scalebox{.75}{\includegraphics{Sir_Winston_Churchil.jpg}}}{\relax}
 
 \tiny
@@ -446,7 +453,7 @@ License.
 \protect\hypertarget{sir-winston-spencer-churchill-1}{}
 \raggedleft\Huge
 
-\raisebox{100pt}{\rotatebox{30}{\textcolor{black}{Brevity}}}　　
+\raisebox{100pt}{\rotatebox{30}{\textcolor{black}{\scalebox{1.2}{Brevity}}}}　　
 \IfFileExists{Sir_Winston_Churchil.jpg}{\scalebox{.75}{\includegraphics{Sir_Winston_Churchil.jpg}}}{\relax}
 
 \tiny
@@ -564,18 +571,15 @@ I ask my colleagues and their staffs to see to it that
 
 \begin{frame}{Brevity}
 \protect\hypertarget{brevity-7}{}
-\LARGE
+\Huge
 
 \begin{itemize}
- \item[\textbullet] 歯切れよく言い切れ
-   \begin{itemize}
-    \item もってまわったいいまわしはやめろ
-    \item 乱暴な表現でかまわない
-   \end{itemize} 
-   \pause
-  \item[\textbullet] 詳細な分析は付録にしろ
-   \pause
-  \item[\textbullet] 柱だけのメモを口頭で補うのもあり
+\item \scalebox{1.3}{歯切れよくいいきれ}
+  \begin{itemize}
+  \item \pause
+  \item \scalebox{2}{\textbullet{}\myCrossedOut{red!60!gray}{冗長ないいまわし}}
+  \item \scalebox{2}{\textbullet{}乱暴な表現でよし}
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -586,11 +590,11 @@ I ask my colleagues and their staffs to see to it that
 \begin{itemize}[<+->]
 \tightlist
 \item
-  \textbullet{}\hspace{2pt}本質的なこと \bigskip
+  \textbullet{}\hspace{2pt} 本質的なこと \bigskip
 \item
-  \textbullet{}\hspace{2pt}体裁 \bigskip
+  \textbullet{}\hspace{2pt} 体裁 \bigskip
 \item
-  \textbullet{}\hspace{2pt}スピード感
+  \textbullet{}\hspace{2pt} スピード感
 \end{itemize}
 \end{frame}
 
