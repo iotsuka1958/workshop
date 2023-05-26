@@ -35,7 +35,7 @@ library(ggthemes)
 ```
 
 
-# a beautiful story
+# a beautiful true story
 
 \Huge
 
@@ -45,7 +45,7 @@ library(ggthemes)
 \item[\textbullet] どんな成果?
 \end{itemize}
 
-# a beautiful story
+# a beautiful true story
 
 \IfFileExists{kids.jpg}{\centering\includegraphics{kids.jpg}}{\relax}
 
@@ -498,7 +498,7 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 
 \Huge
 
--  \textbullet{}\hspace{2pt} 本質的なこと
+-  \textbullet{}\hspace{2pt} 本質
 \bigskip
 -  \textbullet{}\hspace{2pt} 体裁
 \bigskip
@@ -537,9 +537,12 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 \vspace*{-20pt}
 \IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
 
+# ??
+\Huge
 
+\scalebox{1.4}{\textcolor{black}{\begin{tabular}{l}私の夢は\\子供を笑顔にしたい\end{tabular}}}
 
-# attraction
+# May this sign be displayed forever!
 
 
 
