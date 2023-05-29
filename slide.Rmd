@@ -155,7 +155,7 @@ accuracy <- function(x, y, z){
 }
 
 # case study 1
-\begin{center}\Huge
+\begin{center}\Huge               
 \[
  \scalebox{1.4}{$\frac{9}{\;9 + 99\;}=0.08333$}
 \]
