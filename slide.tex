@@ -113,13 +113,6 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-\usepackage{caption}
-% Make caption package work with longtable
-\makeatletter
-\def\fnum@table{\tablename~\thetable}
-\makeatother
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -290,22 +283,22 @@ hogehoge研修}
 \node[block,fill=gray!10] (population) at (0,7) {population\\1,000人};
 \pause
 \node[block,fill=gray!10] (sick) at (-3.5,4) {sick\\10人};
-\draw [->] (population) to[out=-90, in=60] node[auto=right] {$1\%$} (sick); 
+\draw [->, very thick] (population) to[out=-90, in=60] node[auto=right] {$1\%$} (sick); 
 \pause
 \node[block,fill=gray!10] (not_sick) at (3.5,4) {not sick\\990人};
-\draw [->] (population) to[out=-90, in=120]  node[auto=left] {$99\%$} (not_sick); 
+\draw [->,very thick] (population) to[out=-90, in=120]  node[auto=left] {$99\%$} (not_sick); 
 \pause
 \node[block,fill=red!10] (true_positive) at (-5,) {true positive\\9人};
-\draw [->] (sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_positive); 
+\draw [->,very thick] (sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_positive); 
 \pause
 \node[block,fill=gray!10] (false_negative) at (-2,1) {false negative\\1人};
-\draw [->] (sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_negative); 
+\draw [->,very thick] (sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_negative); 
 \pause
 \node[block,fill=gray!10] (true_negative) at (2,1) {true negative\\891人};
-\draw [->] (not_sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_negative); 
+\draw [->,very thick] (not_sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_negative); 
 \pause
 \node[block,fill=red!10] (false_positive) at (5,1) {false positive\\99人};
-\draw [->] (not_sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_positive); 
+\draw [->,very thick] (not_sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_positive); 
  \end{tikzpicture}%
 }
 \end{frame}
@@ -314,8 +307,7 @@ hogehoge研修}
 \protect\hypertarget{case-study-1-5}{}
 \begin{center}\Huge
 \[
-\frac{9}{9 + 99}=0.083333
-\ldots
+ \scalebox{1.4}{$\frac{9}{\;9 + 99\;}=0.08333$}
 \]
 \end{center}
 \end{frame}
@@ -323,6 +315,7 @@ hogehoge研修}
 \begin{frame}{case study 2 --- world war II}
 \protect\hypertarget{case-study-2-world-war-ii}{}
 \raggedleft
+
 \IfFileExists{survivorship_bias.png}{\scalebox{.9}{\includegraphics{survivorship_bias.png}}}{\relax}
 
 \tiny
@@ -335,6 +328,15 @@ Martin Grandjean(vector), McGeddon(picture), Cameron Moll(concept)
 
 This work is licensed under the Creative Commons Attribution-Share Alike
 4.0 International license.
+
+\pause
+
+\Huge
+\vspace{-120pt}
+\raisebox{120pt}{\rotatebox{10}{\textcolor{black}{\scalebox{1.2}{どこを}}}}
+
+\vspace{-130pt}
+\raisebox{130pt}{\rotatebox{10}{\textcolor{black}{\scalebox{1.2}{補強?}}}}
 \end{frame}
 
 \begin{frame}{case study 3}
@@ -366,12 +368,12 @@ This work is licensed under the Creative Commons Attribution-Share Alike
 
 \begin{frame}{plot}
 \protect\hypertarget{plot}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-6-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-4-1.pdf}
 \end{frame}
 
 \begin{frame}{case study 3}
 \protect\hypertarget{case-study-3-2}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-7-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-5-1.pdf}
 \end{frame}
 
 \begin{frame}{case study 3}
@@ -381,27 +383,27 @@ This work is licensed under the Creative Commons Attribution-Share Alike
 
 \begin{frame}{case study 3}
 \protect\hypertarget{case-study-3-4}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-8-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-6-1.pdf}
 \end{frame}
 
 \begin{frame}{case study 3}
 \protect\hypertarget{case-study-3-5}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-9-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-7-1.pdf}
 \end{frame}
 
 \begin{frame}{case study 3}
 \protect\hypertarget{case-study-3-6}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-10-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-8-1.pdf}
 \end{frame}
 
 \begin{frame}{case study 3}
 \protect\hypertarget{case-study-3-7}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-11-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-9-1.pdf}
 \end{frame}
 
 \begin{frame}{case study 3}
 \protect\hypertarget{case-study-3-8}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-12-1.pdf}
+\includegraphics{slide_files/figure-beamer/unnamed-chunk-10-1.pdf}
 \end{frame}
 
 \begin{frame}{case study 3}
@@ -611,22 +613,24 @@ I ask my colleagues and their staffs to see to it that
 \begin{itemize}[<+->]
 \tightlist
 \item
-  「又は」or「または」 \bigskip
+  又は or または \bigskip
 \item
-  「子供」or「子ども」 \bigskip
+  子供 or 子ども \bigskip
 \item
-  「手引」or「手引き」
+  コンピュータ(ー)?? \bigskip
+\item
+  手引 or 手引き
 \end{itemize}
 \end{frame}
 
 \begin{frame}{manual}
 \protect\hypertarget{manual}{}
-\IfFileExists{./seisaku_homu01.png}{\scalebox{1}{\includegraphics{seisaku_homu01.png}}}{\relax}
+\IfFileExists{./seisaku_homu01.png}{\scalebox{1.05}{\includegraphics{seisaku_homu01.png}}}{\relax}
 \end{frame}
 
 \begin{frame}{manual}
 \protect\hypertarget{manual-1}{}
-\IfFileExists{./seisaku_homu03.png}{\scalebox{1.335}{\includegraphics{seisaku_homu03.png}}}{\relax}
+\IfFileExists{./seisaku_homu03.png}{\scalebox{1.4018}{\includegraphics{seisaku_homu03.png}}}{\relax}
 \end{frame}
 
 \begin{frame}{tebiki}
@@ -648,317 +652,15 @@ I ask my colleagues and their staffs to see to it that
 \IfFileExists{./bento.jpg}{\centering\scalebox{.85}{\includegraphics[width=\textheight]{bento.jpg}}}{\relax}
 \end{frame}
 
-\begin{frame}{last but not least}
+\begin{frame}[fragile]{last but not least}
 \protect\hypertarget{last-but-not-least}{}
-\end{frame}
-
-\begin{frame}{data}
-\protect\hypertarget{data}{}
-\begin{itemize}[<+->]
-\item
-  4つのデータ(data\_1 ～ data\_4)があります
-\item
-  それぞれのデータは、11組のxとyから構成されています
-\end{itemize}
-\end{frame}
-
-\begin{frame}{data}
-\protect\hypertarget{data-1}{}
-\begin{tabular}{rr}
-\multicolumn{2}{l}{data\_1}\\
-\toprule
-x & y\\
-\midrule
-10 & 8.04\\
-8 & 6.95\\
-13 & 7.58\\
-9 & 8.81\\
-11 & 8.33\\
-14 & 9.96\\
-6 & 7.24\\
-4 & 4.26\\
-12 & 10.84\\
-7 & 4.82\\
-5 & 5.68\\
-\bottomrule
-\end{tabular}\hfill
-\begin{tabular}{rr}
-\multicolumn{2}{l}{data\_2}\\
-\toprule
-x & y\\
-\midrule
-10 & 9.14\\
-8 & 8.14\\
-13 & 8.74\\
-9 & 8.77\\
-11 & 9.26\\
-14 & 8.10\\
-6 & 6.13\\
-4 & 3.10\\
-12 & 9.13\\
-7 & 7.26\\
-5 & 4.74\\
-\bottomrule
-\end{tabular}\hfill
-\begin{tabular}{rr}
-\multicolumn{2}{l}{data\_3}\\
-\toprule
-x & y\\
-\midrule
-10 & 7.46\\
-8 & 6.77\\
-13 & 12.74\\
-9 & 7.11\\
-11 & 7.81\\
-14 & 8.84\\
-6 & 6.08\\
-4 & 5.39\\
-12 & 8.15\\
-7 & 6.42\\
-5 & 5.73\\
-\bottomrule
-\end{tabular}\hfill
-\begin{tabular}{rr}
-\multicolumn{2}{l}{data\_4}\\
-\toprule
-x & y\\
-\midrule
-8 & 6.58\\
-8 & 5.76\\
-8 & 7.71\\
-8 & 8.84\\
-8 & 8.47\\
-8 & 7.04\\
-8 & 5.25\\
-19 & 12.50\\
-8 & 5.56\\
-8 & 7.91\\
-8 & 6.89\\
-\bottomrule
-\end{tabular}
-\end{frame}
-
-\begin{frame}{data}
-\protect\hypertarget{data-2}{}
-それぞれどういうデータなんだろう
-
-\begin{itemize}[<+->]
-\tightlist
-\item
-  表だけ見てもよくわからない
-\end{itemize}
-\end{frame}
-
-\begin{frame}{data}
-\protect\hypertarget{data-3}{}
-それぞれどういうデータなんだろう
-
-\begin{itemize}[<+->]
-\tightlist
-\item
-  xの平均
-\item
-  xの分散
-\item
-  yの平均
-\item
-  yの分散
-\item
-  xとyの相関係数
-\item
-  回帰直線の式
-\end{itemize}
-\end{frame}
-
-\begin{frame}{summarise}
-\protect\hypertarget{summarise}{}
-\begin{longtable}[]{@{}lrrrrr@{}}
-\toprule()
-data & x\_mean & x\_var & y\_mean & y\_var & cor \\
-\midrule()
-\endhead
-data\_1 & 9 & 11 & 7.500909 & 4.127269 & 0.8164205 \\
-data\_2 & 9 & 11 & 7.500909 & 4.127629 & 0.8162365 \\
-data\_3 & 9 & 11 & 7.500000 & 4.122620 & 0.8162867 \\
-data\_4 & 9 & 11 & 7.500909 & 4.123249 & 0.8165214 \\
-\bottomrule()
-\end{longtable}
-
-\begin{itemize}
-\tightlist
-\item
-  要約統計量はよく似ている
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{visualization}
-\protect\hypertarget{visualization}{}
-\begin{figure}
-\centering
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-15-1.pdf}
-\caption{\texttt{ggplot2} によるグラフ}
-\end{figure}
-\end{frame}
-
-\begin{frame}[fragile]{visualization}
-\protect\hypertarget{visualization-1}{}
-\begin{figure}
-\centering
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-16-1.pdf}
-\caption{\texttt{ggplot2} によるグラフ}
-\end{figure}
-\end{frame}
-
-\begin{frame}{lesson}
-\protect\hypertarget{lesson}{}
-表でみてもよくわからない
-
-平均値とか分散を計算してもよくわからない
-
-図示がだいじ
-\end{frame}
-
-\begin{frame}{quiz:How many millions are in a trillion?}
-\protect\hypertarget{quizhow-many-millions-are-in-a-trillion}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-17-1.pdf}
-\end{frame}
-
-\begin{frame}{quiz:How many millions are in a trillion?}
-\protect\hypertarget{quizhow-many-millions-are-in-a-trillion-1}{}
-\LARGE
-
-1兆は100万の何倍でしょう？
-
-\begin{tabular}{rr}\toprule
-回答&率\\\midrule
-千倍&18\%\\
-万倍&12\%\\
-10万倍&21\%\\
-100万倍&21\%\\
-1000万倍&17\%\\
-わからない&12\%\\\bottomrule
-\end{tabular}
-\end{frame}
-
-\begin{frame}{pie chart}
-\protect\hypertarget{pie-chart}{}
-\includegraphics[height=8cm]{slide_files/figure-beamer/unnamed-chunk-19-1}
-\end{frame}
-
-\begin{frame}{substitute for a pie chart}
-\protect\hypertarget{substitute-for-a-pie-chart}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-20-1.pdf}
-\end{frame}
-
-\begin{frame}{substitute for a pie chart}
-\protect\hypertarget{substitute-for-a-pie-chart-1}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-21-1.pdf}
-\end{frame}
-
-\begin{frame}[fragile]{substitute for a pie chart}
-\protect\hypertarget{substitute-for-a-pie-chart-2}{}
-\begin{verbatim}
-## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## i Please use `linewidth` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-\end{verbatim}
-
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-22-1.pdf}
-\end{frame}
-
-\begin{frame}{quiz:How many millions are in a trillion?}
-\protect\hypertarget{quizhow-many-millions-are-in-a-trillion-2}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-23-1.pdf}
-\end{frame}
-
-\begin{frame}[fragile]{Slide with R Output}
-\protect\hypertarget{slide-with-r-output}{}
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(cars)}
+\FunctionTok{piyopiyo}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-\end{verbatim}
-\end{frame}
-
-\begin{frame}{文書・資料}
-\protect\hypertarget{ux6587ux66f8ux8cc7ux6599}{}
-\begin{itemize}[<+->]
-\tightlist
-\item
-  \textbullet{}\hspace{2pt} The aim should be Reports which set out the
-  main points in a series of short, crisp paragraphs.
-\item
-  \textbullet{}\hspace{2pt} If a Report relies on detailed analysis of
-  some complicated factors, or on statistics, these should be set out in
-  an Appendix.
-\item
-  \textbullet{}\hspace{2pt} Often the occasion is best met by submitting
-  not a full-dress Report, but an Aide-memoire consisting of headings
-  only, which can be expanded orally if needed.
-\item
-  \textbullet\hspace{2pt}Let us have an end of such phrases as these:
-  ``It is also of importance to bear in mind the following
-  considerations\ldots{}'', or ``Consideration should be given to the
-  possibility of carrying into effect\ldots{}'' Most of these woolly
-  phrases are mere padding, which can be left out altogether, or
-  replaced by a single word. Let us not shrink from using the short
-  expressive phrase, even if it is conversational.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{文書・資料}
-\protect\hypertarget{ux6587ux66f8ux8cc7ux6599-1}{}
-Reports drawn up on the lines I propose may at first seem rough as
-compared with the flat surface of officialese jargon. But the saving in
-time will be great, while the discipline of setting out the real points
-concisely will prove an aid to clearer thinking.
-\end{frame}
-
-\begin{frame}{tohoho}
-\protect\hypertarget{tohoho}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-26-1.pdf}
-\end{frame}
-
-\begin{frame}[fragile]{tohoho}
-\protect\hypertarget{tohoho-1}{}
-\includegraphics{slide_files/figure-beamer/unnamed-chunk-27-1.pdf}
-
-\begin{block}{誕生日問題}
-\protect\hypertarget{ux8a95ux751fux65e5ux554fux984c}{}
-閏年は無視。 k人の集団で同じ誕生日の人がいるかどうか。
-
-\begin{block}{少なくとも1組はいる確率}
-\protect\hypertarget{ux5c11ux306aux304fux3068ux30821ux7d44ux306fux3044ux308bux78baux7387}{}
-\begin{verbatim}
-##  [1] 0.000 0.000 0.004 0.018 0.022 0.044 0.063 0.080 0.083 0.130 0.134 0.173
-## [13] 0.212 0.239 0.236 0.270 0.313 0.352 0.361 0.407 0.438 0.486 0.468 0.534
-## [25] 0.586 0.603 0.643 0.651 0.683 0.695 0.717 0.755 0.775 0.788 0.821 0.819
-## [37] 0.851 0.861 0.868 0.891
-\end{verbatim}
-\end{block}
-
-\begin{block}{同じ誕生日の}
-\protect\hypertarget{ux540cux3058ux8a95ux751fux65e5ux306e}{}
-\begin{verbatim}
-##  [1] 0.000 0.001 0.009 0.014 0.024 0.028 0.053 0.079 0.116 0.119 0.151 0.177
-## [13] 0.228 0.248 0.282 0.313 0.369 0.405 0.469 0.545 0.595 0.605 0.676 0.711
-## [25] 0.827 0.872 0.931 0.989 1.095 1.258 1.206 1.256 1.398 1.456 1.558 1.717
-## [37] 1.780 1.874 1.960 2.107
-\end{verbatim}
-\end{block}
-\end{block}
+\includegraphics{slide_files/figure-beamer/cars-1.pdf}
 \end{frame}
 
 \end{document}

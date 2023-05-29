@@ -1,0 +1,198 @@
+---
+title: "importance_of_visualization"
+author: "iotsuka1958"
+date: "2023-05-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+# data
+
+- 4つのデータ(data\_1 ～ data\_4)があります
+
+- それぞれのデータは、11組のxとyから構成されています
+
+```{r echo=FALSE}
+df_1 <- anscombe %>%
+  as_tibble() %>% 
+  select(x1, y1) %>% 
+  rename("x" =x1, "y" = y1)
+
+df_2 <- anscombe %>%
+  as_tibble() %>% 
+  select(x2, y2) %>% 
+  rename("x" =x2, "y" = y2)
+
+df_3 <- anscombe %>%
+  as_tibble() %>% 
+  select(x3, y3) %>% 
+  rename("x" =x3, "y" = y3)
+
+df_4 <- anscombe %>%
+  as_tibble() %>% 
+  select(x4, y4) %>% 
+  rename("x" =x4, "y" = y4)
+```
+
+
+# data
+
+\begin{tabular}{rr}
+\multicolumn{2}{l}{data\_1}\\
+\toprule
+x & y\\
+\midrule
+10 & 8.04\\
+8 & 6.95\\
+13 & 7.58\\
+9 & 8.81\\
+11 & 8.33\\
+14 & 9.96\\
+6 & 7.24\\
+4 & 4.26\\
+12 & 10.84\\
+7 & 4.82\\
+5 & 5.68\\
+\bottomrule
+\end{tabular}\hfill
+\begin{tabular}{rr}
+\multicolumn{2}{l}{data\_2}\\
+\toprule
+x & y\\
+\midrule
+10 & 9.14\\
+8 & 8.14\\
+13 & 8.74\\
+9 & 8.77\\
+11 & 9.26\\
+14 & 8.10\\
+6 & 6.13\\
+4 & 3.10\\
+12 & 9.13\\
+7 & 7.26\\
+5 & 4.74\\
+\bottomrule
+\end{tabular}\hfill
+\begin{tabular}{rr}
+\multicolumn{2}{l}{data\_3}\\
+\toprule
+x & y\\
+\midrule
+10 & 7.46\\
+8 & 6.77\\
+13 & 12.74\\
+9 & 7.11\\
+11 & 7.81\\
+14 & 8.84\\
+6 & 6.08\\
+4 & 5.39\\
+12 & 8.15\\
+7 & 6.42\\
+5 & 5.73\\
+\bottomrule
+\end{tabular}\hfill
+\begin{tabular}{rr}
+\multicolumn{2}{l}{data\_4}\\
+\toprule
+x & y\\
+\midrule
+8 & 6.58\\
+8 & 5.76\\
+8 & 7.71\\
+8 & 8.84\\
+8 & 8.47\\
+8 & 7.04\\
+8 & 5.25\\
+19 & 12.50\\
+8 & 5.56\\
+8 & 7.91\\
+8 & 6.89\\
+\bottomrule
+\end{tabular}
+
+
+
+# data
+
+それぞれどういうデータなんだろう
+
+- 表だけ見てもよくわからない
+
+# data
+
+それぞれどういうデータなんだろう
+
+- xの平均
+- xの分散
+- yの平均
+- yの分散
+- xとyの相関係数
+- 回帰直線の式
+
+# summarise
+
+```{r}
+sokan_keisu <- list(df_1, df_2, df_3, df_4) %>% map_dbl(~cor(.x$x, .x$y))
+list(df_1, df_2, df_3, df_4) %>% map_dfr(~summarise(.x, across(.cols=everything(), .fns=list(mean=mean, var=var), .names="{col}_{fn}"))) %>% 
+  add_column(data=c("data_1", "data_2", "data_3", "data_4"), .before ="x_mean") %>% 
+  add_column(cor = sokan_keisu, .after= "y_var") %>% 
+  knitr::kable()
+```
+
+>- 要約統計量はよく似ている
+
+# visualization
+
+```{r fig.cap="`ggplot2` によるグラフ", echo=FALSE}
+anscombe %>% 
+  pivot_longer(cols = everything(),
+               names_to = c(".value", "set"),
+               names_pattern = "(x|y)(\\d)") %>% 
+  mutate(set=str_c("data_", set)) %>% 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  facet_wrap(~set)
+```
+
+
+
+
+
+# visualization
+
+```{r fig.cap="`ggplot2` によるグラフ", echo=FALSE}
+anscombe %>% 
+  pivot_longer(cols = everything(),
+               names_to = c(".value", "set"),
+               names_pattern = "(x|y)(\\d)") %>% 
+  mutate(set=str_c("data_", set)) %>% 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~set)
+```
+
+
+# lesson
+
+表でみてもよくわからない
+
+平均値とか分散を計算してもよくわからない
+
+図示がだいじ
+
+
+
+
+
+
+
+
+

@@ -32,6 +32,7 @@ library(viridis)
 library(gt)
 library(ragg)
 library(ggthemes)
+library(bayestestR)
 ```
 
 
@@ -134,39 +135,38 @@ accuracy <- function(x, y, z){
 \node[block,fill=gray!10] (population) at (0,7) {population\\1,000人};
 \pause
 \node[block,fill=gray!10] (sick) at (-3.5,4) {sick\\10人};
-\draw [->] (population) to[out=-90, in=60] node[auto=right] {$1\%$} (sick); 
+\draw [->, very thick] (population) to[out=-90, in=60] node[auto=right] {$1\%$} (sick); 
 \pause
 \node[block,fill=gray!10] (not_sick) at (3.5,4) {not sick\\990人};
-\draw [->] (population) to[out=-90, in=120]  node[auto=left] {$99\%$} (not_sick); 
+\draw [->,very thick] (population) to[out=-90, in=120]  node[auto=left] {$99\%$} (not_sick); 
 \pause
 \node[block,fill=red!10] (true_positive) at (-5,) {true positive\\9人};
-\draw [->] (sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_positive); 
+\draw [->,very thick] (sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_positive); 
 \pause
 \node[block,fill=gray!10] (false_negative) at (-2,1) {false negative\\1人};
-\draw [->] (sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_negative); 
+\draw [->,very thick] (sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_negative); 
 \pause
 \node[block,fill=gray!10] (true_negative) at (2,1) {true negative\\891人};
-\draw [->] (not_sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_negative); 
+\draw [->,very thick] (not_sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_negative); 
 \pause
 \node[block,fill=red!10] (false_positive) at (5,1) {false positive\\99人};
-\draw [->] (not_sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_positive); 
+\draw [->,very thick] (not_sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_positive); 
  \end{tikzpicture}%
 }
 
 # case study 1
 \begin{center}\Huge
 \[
-\frac{9}{9 + 99}=0.083333
-\ldots
+ \scalebox{1.4}{$\frac{9}{\;9 + 99\;}=0.08333$}
 \]
 \end{center}
-
 
 
 
 # case study 2 --- world war II
 
 \raggedleft
+
 \IfFileExists{survivorship_bias.png}{\scalebox{.9}{\includegraphics{survivorship_bias.png}}}{\relax}
 
 
@@ -179,7 +179,15 @@ Martin Grandjean(vector), McGeddon(picture), Cameron Moll(concept)
 
 This work is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.
 
+\pause
 
+
+\Huge
+\vspace{-120pt}
+\raisebox{120pt}{\rotatebox{10}{\textcolor{black}{\scalebox{1.2}{どこを}}}}
+
+\vspace{-130pt}
+\raisebox{130pt}{\rotatebox{10}{\textcolor{black}{\scalebox{1.2}{補強?}}}}
 
 # case study 3
 
@@ -209,46 +217,23 @@ This work is licensed under the Creative Commons Attribution-Share Alike 4.0 Int
 
 # plot
 
-```{r echo=FALSE}
-df_base <- iris %>%
-  janitor::clean_names() %>%
-  as_tibble() %>% 
-  filter(species == "versicolor") %>% 
-  rename("time" = sepal_length,
-         "point" = petal_length,
-         "school" = species)
-```
-
-```{r echo=FALSE}
-df_D <- df_base %>% 
-  mutate(time = time - 3, point = point + .4, school = "school_D")
-
-df_C <- df_D %>% 
-  mutate(time = time -.25, point = point + .9, school = "school_C")
-
-df_B <- df_C %>% 
-  mutate(time = time -.25, point = point + .9, school = "school_B")
-
-df_A <- df_B %>% 
-  mutate(time = time -.25, point = point + .9, school = "school_A")
-```
-
-
 
 
 ```{r echo=FALSE}
-q <- df_A %>% bind_rows(df_B, df_C, df_D) %>% 
-  ggplot(aes(time, point * 10)) +
-  geom_jitter(width = .8, height = .8, alpha = .7, size = 2) +
-#  geom_point(alpha = .75, size = 2) +
-  labs(x = "time spent studying", 
-       y = "score")
+set.seed(2)
+data <- simulate_simpson(n = 100, groups = 4, r = 0.2, group_prefix = "school_") |> 
+  mutate(V2 = (V2 + 9) * 10, V1 = .5 * V1 + 1) |> 
+  rename("study_time" = V1, "grade" = V2, "school" = Group)
+#####################
+piyopiyo <- function(){
+  ggplot(data, aes(x = study_time, y = grade)) +
+    geom_point(alpha = .7) +
+    labs(x = "学習時間", y = "正答率")
+}
 ```
-
 
 ```{r}
-set.seed(1)
-q
+piyopiyo()
 ```
 
 
@@ -257,8 +242,7 @@ q
 
 
 ```{r echo=FALSE, message=FALSE}
-set.seed(1)
-q +
+piyopiyo() +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
@@ -274,9 +258,8 @@ q +
 
 ```{r echo=FALSE}
 set.seed(1)
-q +
+piyopiyo() +
   aes(colour = school) +
-#  scale_color_viridis_d(name = "") 
   ggthemes::scale_colour_few(guide = "none")
 ```
 
@@ -288,8 +271,7 @@ q +
 
 
 ```{r echo=FALSE}
-set.seed(1)
-q +
+piyopiyo() +
   aes(colour = school) +
   scale_color_few(guide = "none") +
   facet_wrap(~school)
@@ -301,7 +283,7 @@ q +
 
 ```{r echo=FALSE}
 set.seed(1)
-q +
+piyopiyo() +
   aes(colour = school) +
   scale_color_few(guide = "none") +
   facet_wrap(~school) +
@@ -313,8 +295,7 @@ q +
 
 
 ```{r echo=FALSE}
-set.seed(1)
-q +
+piyopiyo() +
   aes(colour = school) +
   scale_color_few(guide = "none") +
   geom_smooth(method = "lm", se = FALSE)
@@ -325,8 +306,7 @@ q +
 
 
 ```{r echo=FALSE, message=FALSE}
-set.seed(1)
-q +
+piyopiyo() +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
@@ -516,19 +496,21 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 
 \Huge
 
-- 「又は」or「または」
+- 又は or または
 \bigskip
-- 「子供」or「子ども」
+- 子供 or 子ども
 \bigskip
-- 「手引」or「手引き」
+- コンピュータ(ー)??
+\bigskip
+- 手引 or 手引き
 
 # manual
 
-\IfFileExists{./seisaku_homu01.png}{\scalebox{1}{\includegraphics{seisaku_homu01.png}}}{\relax}
+\IfFileExists{./seisaku_homu01.png}{\scalebox{1.05}{\includegraphics{seisaku_homu01.png}}}{\relax}
 
 # manual
 
-\IfFileExists{./seisaku_homu03.png}{\scalebox{1.335}{\includegraphics{seisaku_homu03.png}}}{\relax}
+\IfFileExists{./seisaku_homu03.png}{\scalebox{1.4018}{\includegraphics{seisaku_homu03.png}}}{\relax}
 
 
 
@@ -555,408 +537,9 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 
 
 
-# data
-
-- 4つのデータ(data\_1 ～ data\_4)があります
-
-- それぞれのデータは、11組のxとyから構成されています
-
-```{r echo=FALSE}
-df_1 <- anscombe %>%
-  as_tibble() %>% 
-  select(x1, y1) %>% 
-  rename("x" =x1, "y" = y1)
-
-df_2 <- anscombe %>%
-  as_tibble() %>% 
-  select(x2, y2) %>% 
-  rename("x" =x2, "y" = y2)
-
-df_3 <- anscombe %>%
-  as_tibble() %>% 
-  select(x3, y3) %>% 
-  rename("x" =x3, "y" = y3)
-
-df_4 <- anscombe %>%
-  as_tibble() %>% 
-  select(x4, y4) %>% 
-  rename("x" =x4, "y" = y4)
-```
-
-
-# data
-
-\begin{tabular}{rr}
-\multicolumn{2}{l}{data\_1}\\
-\toprule
-x & y\\
-\midrule
-10 & 8.04\\
-8 & 6.95\\
-13 & 7.58\\
-9 & 8.81\\
-11 & 8.33\\
-14 & 9.96\\
-6 & 7.24\\
-4 & 4.26\\
-12 & 10.84\\
-7 & 4.82\\
-5 & 5.68\\
-\bottomrule
-\end{tabular}\hfill
-\begin{tabular}{rr}
-\multicolumn{2}{l}{data\_2}\\
-\toprule
-x & y\\
-\midrule
-10 & 9.14\\
-8 & 8.14\\
-13 & 8.74\\
-9 & 8.77\\
-11 & 9.26\\
-14 & 8.10\\
-6 & 6.13\\
-4 & 3.10\\
-12 & 9.13\\
-7 & 7.26\\
-5 & 4.74\\
-\bottomrule
-\end{tabular}\hfill
-\begin{tabular}{rr}
-\multicolumn{2}{l}{data\_3}\\
-\toprule
-x & y\\
-\midrule
-10 & 7.46\\
-8 & 6.77\\
-13 & 12.74\\
-9 & 7.11\\
-11 & 7.81\\
-14 & 8.84\\
-6 & 6.08\\
-4 & 5.39\\
-12 & 8.15\\
-7 & 6.42\\
-5 & 5.73\\
-\bottomrule
-\end{tabular}\hfill
-\begin{tabular}{rr}
-\multicolumn{2}{l}{data\_4}\\
-\toprule
-x & y\\
-\midrule
-8 & 6.58\\
-8 & 5.76\\
-8 & 7.71\\
-8 & 8.84\\
-8 & 8.47\\
-8 & 7.04\\
-8 & 5.25\\
-19 & 12.50\\
-8 & 5.56\\
-8 & 7.91\\
-8 & 6.89\\
-\bottomrule
-\end{tabular}
-
-
-
-# data
-
-それぞれどういうデータなんだろう
-
-- 表だけ見てもよくわからない
-
-# data
-
-それぞれどういうデータなんだろう
-
-- xの平均
-- xの分散
-- yの平均
-- yの分散
-- xとyの相関係数
-- 回帰直線の式
-
-# summarise
-
-```{r}
-sokan_keisu <- list(df_1, df_2, df_3, df_4) %>% map_dbl(~cor(.x$x, .x$y))
-list(df_1, df_2, df_3, df_4) %>% map_dfr(~summarise(.x, across(.cols=everything(), .fns=list(mean=mean, var=var), .names="{col}_{fn}"))) %>% 
-  add_column(data=c("data_1", "data_2", "data_3", "data_4"), .before ="x_mean") %>% 
-  add_column(cor = sokan_keisu, .after= "y_var") %>% 
-  knitr::kable()
-```
-
->- 要約統計量はよく似ている
-
-# visualization
-
-```{r fig.cap="`ggplot2` によるグラフ", echo=FALSE}
-anscombe %>% 
-  pivot_longer(cols = everything(),
-               names_to = c(".value", "set"),
-               names_pattern = "(x|y)(\\d)") %>% 
-  mutate(set=str_c("data_", set)) %>% 
-  ggplot(aes(x, y)) +
-  geom_point() +
-  facet_wrap(~set)
-```
-
-
-
-# visualization
-
-```{r fig.cap="`ggplot2` によるグラフ", echo=FALSE}
-anscombe %>% 
-  pivot_longer(cols = everything(),
-               names_to = c(".value", "set"),
-               names_pattern = "(x|y)(\\d)") %>% 
-  mutate(set=str_c("data_", set)) %>% 
-  ggplot(aes(x, y)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  facet_wrap(~set)
-```
-
-
-# lesson
-
-表でみてもよくわからない
-
-平均値とか分散を計算してもよくわからない
-
-図示がだいじ
-
-
-# quiz:How many millions are in a trillion?
-
-
-```{r echo=FALSE}
-p <- ggplot(iris, aes(Sepal.Length, Sepal.Width,
-                      colour = Species)) +
-  geom_point()
-spc <- c("ヒオウギアヤメ", "イリス・ウェルシコロル",
-         "イリス・ヴァージニカ")
-p + labs(x = "がくの長さ(cm)", y = "萼の幅(cm)") +
-         scale_colour_discrete(name = "種", labels = spc)
-```
-
-
-
-
-# quiz:How many millions are in a trillion?
-
-
-\LARGE
-
-1兆は100万の何倍でしょう？
-
-
-\begin{tabular}{rr}\toprule
-回答&率\\\midrule
-千倍&18\%\\
-万倍&12\%\\
-10万倍&21\%\\
-100万倍&21\%\\
-1000万倍&17\%\\
-わからない&12\%\\\bottomrule
-\end{tabular}
-
-
-
-
-
-# pie chart
-
-```{r include=FALSE}
-choices = c("10^3 倍","10^4 倍","10^5 倍","10^6 倍","10^7 倍","わからない") %>% fct_inorder() 
-value <-  c(18,12,21,21,17,12)
-df_pie <- tibble(choices, value)
-```
-
-
-```{r out.height="8cm"}
-df_pie %>% 
-　　mutate(position = 100 - (cumsum(value) - value/2)) %>% 
-  ggplot(aes(x = "", y = value, fill = choices)) + 
-　　geom_bar(stat = "identity", position = "stack") +
-　　coord_polar(theta = "y", direction = -1) + 
-　　geom_text(aes(y = position, label = choices), size = 6, colour = "white")  +
-    scale_fill_viridis_d(guide = "none") +
-    theme_void()
-```
-
-
-# substitute for a pie chart
-
-
-```{r echo=FALSE}
-df_pie %>% 
-  ggplot() + geom_col(aes(choices, value, fill = choices))  +
-  scale_fill_viridis_d(guide = "none") +
-  labs(x = "", y = "比率(%)")
-```
-
-
-# substitute for a pie chart
-
-
-```{r}
-df_pie %>% 
-  ggplot() + geom_col(aes(fct_rev(choices), value, fill = choices)) +
-  scale_fill_viridis_d(guide = "none") +
-  coord_flip() +
-  labs(x = "", y = "比率(%)")
-```
-
-
-# substitute for a pie chart
-
-
-```{r}
-df_pie %>% 
-  ggplot() + geom_point(aes(fct_rev(choices), value, colour = choices),
-                        colour = "orange",
-                        size = 10) +
-  geom_segment(aes(x = choices, xend = choices,
-                   y = 0, yend = value),
-               colour = "grey",
-               size = 1) +
-  coord_flip() +
-  labs(x = "", y = "比率(%)")
-```
-
-
-
-# quiz:How many millions are in a trillion?
-
-
-```{r echo=FALSE}
-p <- ggplot(iris, aes(Sepal.Length, Sepal.Width,
-                      colour = Species)) +
-  geom_point()
-spc <- c("ヒオウギアヤメ", "イリス・ウェルシコロル",
-         "イリス・ヴァージニカ")
-p +  scale_colour_discrete(name = "種", labels = iris$Species) +
-     labs(x = "ほげほげ(cm)", y = "およよ(cm)") 
-```
-
-
-# Slide with R Output
-
 ```{r cars, echo = TRUE}
-summary(cars)
+piyopiyo()
 ```
 
 
-
-
-
-# 文書・資料
-
-
-- \textbullet{}\hspace{2pt} The aim should be Reports which set out the main points in a series of short, crisp paragraphs.
--  \textbullet{}\hspace{2pt} If a Report relies on detailed analysis of some complicated factors, or on statistics, these should be set out in an Appendix.
--  \textbullet{}\hspace{2pt} Often the occasion is best met by submitting not a full-dress Report, but an Aide-memoire consisting of headings only, which can be expanded orally if needed. 
-- \textbullet\hspace{2pt}Let us have an end of such phrases as these: 
- “It is also of importance to bear in mind the following considerations...”, or  “Consideration should be given to the possibility of carrying into effect...”
-Most of these woolly phrases are mere padding, which can be left out altogether, or replaced by a single word. Let us not shrink from using the short expressive phrase, even if it is conversational.
-
-# 文書・資料
-
-
-Reports drawn up on the lines I propose may at first seem rough as compared with the flat surface of officialese jargon. But the saving in time will be great, while the discipline of setting out the real points concisely will prove an aid to clearer thinking.
-
-
-
-
-
-# tohoho
-
-
-```{r include=FALSE}
-choices = c("ほぼ毎日","週2、3回","週1回","2週間に1回","月1回","学校による", "有事のみ", "未実施", "把握せず") %>% fct_inorder() 
-value <-  c(11.3,5.7,17,7.5,13.2,3.8,3.8,34,1.9)
-df_pie <- tibble(choices, value)
-```
-
-
-```{r}
-school <- c("school_A", "school_B", "school_C")
-とても不満 <- c(5, 18, 20)
-不満 <- c(20, 18, 25)
-ふつう <- c(13, 15, 30)
-満足 <- c(43, 30, 15)
-とても満足 <- c(17, 20, 10)
-
-df_likert <- tibble(school, とても不満, 不満, ふつう, 満足, とても満足)
-```
-
-```{r}
-df_likert %>%
-  pivot_longer(-school) %>%
-  mutate(name = fct_inorder(name)) %>% 
-  mutate(name = fct_rev(name)) %>% 
-  ggplot(data = .)+
-  geom_bar(aes(x = fct_rev(school), y=value, fill=name), position="stack", stat="identity")+
-  coord_flip() + 
-  ggtitle("授業の満足度")+
-  ylab("Percentage")+
-  xlab("School")+
-  scale_fill_brewer(palette="PRGn", name = "" ) +
-  theme(legend.position="bottom") +
-  guides(fill = guide_legend(reverse = TRUE))
-```
-
-
-# tohoho
- 
-
-
-
-```{r}
-df_likert %>% HH::likert(school~., ., as.percent = TRUE,
-           main="授業の満足度",
-           xlab="percentage", ylab="School") 
-```
-
-
-## 誕生日問題
-
-閏年は無視。
-k人の集団で同じ誕生日の人がいるかどうか。
-
-### 少なくとも1組はいる確率
-
-```{r}
-birthday <- function(k){
-     {replicate(1000, {
-         len <- sample(365, k, replace = TRUE) |> unique() |> length()
-         k - len
-     }) > 0} |> mean()
- }
-```
-
-
-
-```{r}
-Vectorize(birthday)(1:40)
-```
-
-### 同じ誕生日の
-
-```{r}
-birthday_daburi <- function(k){
-     {replicate(1000, {
-         len <- sample(365, k, replace = TRUE) |> unique() |> length()
-         k - len
-     }) } |> mean()
- }
-```
-
-
-```{r}
-Vectorize(birthday_daburi)(1:40)
-```
 

@@ -1,0 +1,53 @@
+---
+title: "birthday_daburi"
+author: "iotsuka1958"
+date: "2023-05-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+
+## 誕生日問題
+
+閏年は無視。
+k人の集団で同じ誕生日の人がいるかどうか。
+
+### 少なくとも1組はいる確率
+
+```{r}
+birthday <- function(k){
+     {replicate(1000, {
+         len <- sample(365, k, replace = TRUE) |> unique() |> length()
+         k - len
+     }) > 0} |> mean()
+ }
+```
+
+
+
+```{r}
+Vectorize(birthday)(1:40)
+```
+
+### 同じ誕生日の
+
+```{r}
+birthday_daburi <- function(k){
+     {replicate(1000, {
+         len <- sample(365, k, replace = TRUE) |> unique() |> length()
+         k - len
+     }) } |> mean()
+ }
+```
+
+
+```{r}
+Vectorize(birthday_daburi)(1:40)
+```

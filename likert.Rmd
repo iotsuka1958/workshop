@@ -1,0 +1,63 @@
+---
+title: "likert"
+author: "iotsuka1958"
+date: "2023-05-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(HH)
+```
+
+# likert
+
+
+```{r include=FALSE}
+choices = c("ほぼ毎日","週2、3回","週1回","2週間に1回","月1回","学校による", "有事のみ", "未実施", "把握せず") %>% fct_inorder() 
+value <-  c(11.3,5.7,17,7.5,13.2,3.8,3.8,34,1.9)
+df_pie <- tibble(choices, value)
+```
+
+
+```{r}
+school <- c("school_A", "school_B", "school_C")
+とても不満 <- c(5, 18, 20)
+不満 <- c(20, 18, 25)
+ふつう <- c(13, 15, 30)
+満足 <- c(43, 30, 15)
+とても満足 <- c(17, 20, 10)
+
+df_likert <- tibble(school, とても不満, 不満, ふつう, 満足, とても満足)
+```
+
+```{r}
+df_likert %>%
+  pivot_longer(-school) %>%
+  mutate(name = fct_inorder(name)) %>% 
+  mutate(name = fct_rev(name)) %>% 
+  ggplot(data = .)+
+  geom_bar(aes(x = fct_rev(school), y=value, fill=name), position="stack", stat="identity")+
+  coord_flip() + 
+  ggtitle("授業の満足度")+
+  ylab("Percentage")+
+  xlab("School")+
+  scale_fill_brewer(palette="PRGn", name = "" ) +
+  theme(legend.position="bottom") +
+  guides(fill = guide_legend(reverse = TRUE))
+```
+
+
+# tohoho
+ 
+
+
+
+```{r}
+df_likert %>% HH::likert(school~., ., as.percent = TRUE,
+           main="授業の満足度",
+           xlab="percentage", ylab="School") 
+```

@@ -1,0 +1,103 @@
+---
+title: "pie_chart"
+author: "iotsuka1958"
+date: "2023-05-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# quiz:How many millions are in a trillion?
+
+
+\LARGE
+
+1兆は100万の何倍でしょう？
+
+
+\begin{tabular}{rr}\toprule
+回答&率\\\midrule
+千倍&18\%\\
+万倍&12\%\\
+10万倍&21\%\\
+100万倍&21\%\\
+1000万倍&17\%\\
+わからない&12\%\\\bottomrule
+\end{tabular}
+
+
+
+
+
+# pie chart
+
+```{r include=FALSE}
+choices = c("10^3 倍","10^4 倍","10^5 倍","10^6 倍","10^7 倍","わからない") %>% fct_inorder() 
+value <-  c(18,12,21,21,17,12)
+df_pie <- tibble(choices, value)
+```
+
+
+```{r out.height="8cm"}
+df_pie %>% 
+　　mutate(position = 100 - (cumsum(value) - value/2)) %>% 
+  ggplot(aes(x = "", y = value, fill = choices)) + 
+　　geom_bar(stat = "identity", position = "stack") +
+　　coord_polar(theta = "y", direction = -1) + 
+　　geom_text(aes(y = position, label = choices), size = 6, colour = "white")  +
+    scale_fill_viridis_d(guide = "none") +
+    theme_void()
+```
+
+
+
+# substitute for a pie chart
+
+
+```{r echo=FALSE}
+df_pie %>% 
+  ggplot() + geom_col(aes(choices, value, fill = choices))  +
+  scale_fill_viridis_d(guide = "none") +
+  labs(x = "", y = "比率(%)")
+```
+
+
+# substitute for a pie chart
+
+
+```{r}
+df_pie %>% 
+  ggplot() + geom_col(aes(fct_rev(choices), value, fill = choices)) +
+  scale_fill_viridis_d(guide = "none") +
+  coord_flip() +
+  labs(x = "", y = "比率(%)")
+```
+
+
+
+
+
+# substitute for a pie chart
+
+
+```{r}
+df_pie %>% 
+  ggplot() + geom_point(aes(fct_rev(choices), value, colour = choices),
+                        colour = "orange",
+                        size = 10) +
+  geom_segment(aes(x = choices, xend = choices,
+                   y = 0, yend = value),
+               colour = "grey",
+               size = 1) +
+  coord_flip() +
+  labs(x = "", y = "比率(%)")
+```
+
+
+
+
+
+
+
