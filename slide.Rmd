@@ -496,13 +496,13 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 
 \Huge
 
-- 又は or または
-\bigskip
-- 子供 or 子ども
-\bigskip
-- コンピュータ(ー)??
-\bigskip
-- 手引 or 手引き
+\begin{enumerate}
+\item \scalebox{1.2}{又は or または}\pause
+\item \scalebox{1.2}{子供 or 子ども}\pause
+\item \scalebox{1.2}{コンピュータ}\par
+\scalebox{1.2}{or コンピューター}\pause
+\item \scalebox{1.2}{手引 or 手引き}\pause
+\end{enumerate}
 
 # manual
 
@@ -518,6 +518,17 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 
 \vspace*{-20pt}
 \IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
+
+# summing up
+
+\Huge
+
+\begin{itemize}
+\item  \scalebox{1.4}{根拠}\pause
+\item  \scalebox{1.4}{簡潔さ}\pause
+\item  \scalebox{1.4}{スピード感}
+\end{itemize}
+
 
 # ??
 \Huge
