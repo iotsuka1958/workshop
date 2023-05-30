@@ -221,16 +221,22 @@ This work is licensed under the Creative Commons Attribution-Share Alike 4.0 Int
 
 ```{r echo=FALSE}
 set.seed(2)
-data <- simulate_simpson(n = 100, groups = 4, r = 0.2, group_prefix = "school_") |> 
+data <- simulate_simpson(n = 200, groups = 4, r = 0.3, group_prefix = "school_") |> 
   mutate(V2 = (V2 + 9) * 10, V1 = .5 * V1 + 1) |> 
-  rename("study_time" = V1, "grade" = V2, "school" = Group)
+  rename("study_time" = V1, "grade" = V2, "school" = Group) |> 
+  mutate(study_time = study_time*.7) |> 
+  mutate(grade = if_else(grade > 100, 100, grade))
 #####################
 piyopiyo <- function(){
   ggplot(data, aes(x = study_time, y = grade)) +
-    geom_point(alpha = .7) +
-    labs(x = "学習時間", y = "正答率")
+    geom_point(alpha = .7, size = 3) +
+    labs(x = "学習時間(h)", y = "正答率")
 }
 ```
+
+
+
+
 
 ```{r}
 piyopiyo()
@@ -249,7 +255,7 @@ piyopiyo() +
 
 # case study 3
 
-\IfFileExists{./letsnotsee.jpg}{\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax}
+\IfFileExists{./letsnotsee.jpg}{\centering\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax}
 
 
 # case study 3
@@ -307,7 +313,13 @@ piyopiyo() +
 
 ```{r echo=FALSE, message=FALSE}
 piyopiyo() +
-  geom_smooth(method = "lm", se = FALSE)
+  aes(colour = school) +
+  scale_color_few(guide = "none") +
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_smooth(data = data, 
+              aes(study_time, grade), 
+              colour = "black", 
+              method = "lm", se = FALSE)
 ```
 
 
