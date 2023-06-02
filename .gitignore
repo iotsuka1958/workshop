@@ -6,7 +6,16 @@
 *.png
 *.pdf
 *.tex.*
+*~
+\#*
+*.dvi
 *.aux
 *.log
+*.toc
+*.idx
+*.ind
+*.ilg
+*.out
+*.blg
 *.synctex.gz
 *.gitignore.*
