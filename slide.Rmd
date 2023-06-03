@@ -102,8 +102,12 @@ library(bayestestR)
 # case study 1
 
 \Huge
-
-実際に病気である確率は??
+\raggedleft
+\raisebox{-20pt}{\rotatebox{20}{\scalebox{1.4}{\textcolor{red!60}{\fbox{\fbox{陽性}}}}}}判定のあなたが\par
+\vspace*{-20pt}\pause
+\scalebox{1}{\textcolor{red!60}{ほんとうに}}\par
+\pause
+\scalebox{1.4}{\textcolor{red!60}{病気}}である確率は？
 
 
 
@@ -135,22 +139,22 @@ accuracy <- function(x, y, z){
 \node[block,fill=gray!10] (population) at (0,7) {population\\1,000人};
 \pause
 \node[block,fill=gray!10] (sick) at (-3.5,4) {sick\\10人};
-\draw [->, very thick] (population) to[out=-90, in=60] node[auto=right] {$1\%$} (sick); 
+\draw [->, very thick,color=black!60] (population) to[out=-90, in=60] node[auto=right] {有病率$1\%$} (sick); 
 \pause
 \node[block,fill=gray!10] (not_sick) at (3.5,4) {not sick\\990人};
-\draw [->,very thick] (population) to[out=-90, in=120]  node[auto=left] {$99\%$} (not_sick); 
+\draw [->,very thick,color=black!60] (population) to[out=-90, in=120]  node[auto=left] {$99\%$} (not_sick); 
 \pause
-\node[block,fill=red!10] (true_positive) at (-5,) {true positive\\9人};
-\draw [->,very thick] (sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_positive); 
+\node[block,fill=red!10,draw=red] (true_positive) at (-5,) {true positive\\9人};
+\draw [->,very thick,,color=black!60] (sick) to[out=-90, in=90]  node[auto=right] {感度$90\%$} (true_positive); 
 \pause
 \node[block,fill=gray!10] (false_negative) at (-2,1) {false negative\\1人};
-\draw [->,very thick] (sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_negative); 
+\draw [->,very thick,,color=black!60] (sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_negative); 
 \pause
 \node[block,fill=gray!10] (true_negative) at (2,1) {true negative\\891人};
-\draw [->,very thick] (not_sick) to[out=-90, in=90]  node[auto=right] {$90\%$} (true_negative); 
+\draw [->,very thick,,color=black!60] (not_sick) to[out=-90, in=90]  node[auto=right] {特異度$90\%$} (true_negative); 
 \pause
-\node[block,fill=red!10] (false_positive) at (5,1) {false positive\\99人};
-\draw [->,very thick] (not_sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_positive); 
+\node[block,fill=red!10,draw=red] (false_positive) at (5,1) {false positive\\99人};
+\draw [->,very thick,,color=black!60] (not_sick) to[out=-90, in=90]  node[auto=left] {$10\%$} (false_positive); 
  \end{tikzpicture}%
 }
 
