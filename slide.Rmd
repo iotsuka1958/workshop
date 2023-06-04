@@ -54,27 +54,33 @@ library(bayestestR)
 \Huge
 
 \begin{itemize}
+\item[\textbullet] 思いはだいじ\ldots\pause
 \item[\textbullet] 思いだけでは進まない
-\pause
-\item[\textbullet] 客観的な根拠
 \end{itemize}
 \pause
 \vspace*{-30pt}
-\hspace*{18pt}\rotatebox{13}{\scalebox{2}{\textcolor{gray}{dataの活用!}}}
-
-# case study 1
-
+\hspace*{18pt}\rotatebox{13}{\scalebox{2}{\textcolor{gray}{客観的な根拠!}}}
 
 # case study 1
 
 \Huge
 
+\begin{itemize}
+\item[\textbullet] 法律・規則\pause
+\item[\textbullet] 公約\pause
+\item[\textbullet] \textcolor{red!50}{データ・数字}
+\end{itemize}
 
-\rotatebox{0}{\scalebox{2}{\textcolor{gray}{\begin{tabular}{l}病気の検査\end{tabular}}}}
+# case study 1
 
-\vspace*{-48pt}
+\Huge
+\centering
+
+\raisebox{-40pt}{\rotatebox{0}{\scalebox{2}{\textcolor{gray}{\begin{tabular}{l}病気の検査\end{tabular}}}}}
+
+\vspace*{-58pt}
 \pause
-\rotatebox{20}{\scalebox{3.8}{\textcolor{red!30}{\begin{tabular}{l}\fbox{\fbox{陽性}}\end{tabular}}}}
+\rotatebox{15}{\scalebox{3.8}{\textcolor{red!30}{\begin{tabular}{l}\fbox{\fbox{陽性}}\end{tabular}}}}
 
 <!-- # case study 1 -->
 
@@ -86,18 +92,23 @@ library(bayestestR)
 
 \LARGE
 
-\begin{itemize}
-\item どんな病気??
+どれくらいの人がかかっている病気??
 \pause
-\item 　\textbullet{}\hspace{2pt}人口の1\%がこの病気
+  \begin{itemize}
+  \item 　\textbullet{}\hspace{2pt}人口の1\%
+  \item 
+  \end{itemize}
 \pause
-\item
-\item どんな検査??
+検査の性能は??
 \pause
-\item 　\textbullet{}\hspace{2pt}病気なら90\%の確率で陽性
-\pause
-\item 　\textbullet{}\hspace{2pt}病気でないなら90\%の確率で陰性
-\end{itemize}
+  \begin{itemize}
+  \item 　\textbullet{}\hspace{2pt}病気なら陽性確率90\%
+  \pause
+  \item 　\textbullet{}\hspace{2pt}病気でないなら陰性確率90\%
+  \end{itemize}
+
+
+
 
 # case study 1
 
@@ -126,8 +137,10 @@ accuracy <- function(x, y, z){
 ```
 
 
+# case study 1
+\Huge
 
-
+\scalebox{1.4}{計算しよう}
 
 
 # case study 1
@@ -344,6 +357,10 @@ piyopiyo() +
 全体と個々のグループでの傾向が異なる
 
 \normalsize
+
+# evidence-based policy-making
+
+
 
 # tebiki
 
