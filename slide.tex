@@ -185,6 +185,7 @@
       inner sep=2pt, outer sep=0pt,
       decoration={random steps, segment length=2pt, amplitude=0.4pt}]
       (T) {#2};}
+%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -204,13 +205,28 @@ hogehoge研修}
 \begin{document}
 \frame{\titlepage}
 
+\begin{frame}{　}
+\protect\hypertarget{section}{}
+\Huge
+
+\begin{itemize}\itemsep=1ex
+\item[\textbullet] \scalebox{1.4}{根拠}\pause
+\item[\textbullet] \scalebox{1.4}{簡潔さ}
+%\pause
+%     \begin{itemize}
+%     \item  \scalebox{2.2}{\hspace{1ex}本質}
+%     \item  \scalebox{2.2}{\hspace{1ex}スピード感}
+%     \end{itemize}
+\end{itemize}
+\end{frame}
+
 \begin{frame}{a beautiful true story}
 \protect\hypertarget{a-beautiful-true-story}{}
 \Huge
 
 \begin{itemize}
-\item[\textbullet] 予算の会議\pause
-\item[\textbullet] ある事業について\pause
+\item[\textbullet] 予算の会議
+\item[\textbullet] ある事業について
 \item[\textbullet] どんな成果?
 \end{itemize}
 \end{frame}
@@ -623,8 +639,6 @@ I ask my colleagues and their staffs to see to it that
 \item
   \textbullet{}\hspace{2pt} 本質 \bigskip
 \item
-  \textbullet{}\hspace{2pt} 体裁 \bigskip
-\item
   \textbullet{}\hspace{2pt} スピード感
 \end{itemize}
 \end{frame}
@@ -676,7 +690,7 @@ I ask my colleagues and their staffs to see to it that
 \end{frame}
 
 \begin{frame}{??}
-\protect\hypertarget{section}{}
+\protect\hypertarget{section-1}{}
 \Huge
 
 \scalebox{1.4}{\textcolor{black}{\begin{tabular}{l}私の夢は\\子供を笑顔にしたい\end{tabular}}}

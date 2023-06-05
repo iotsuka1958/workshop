@@ -35,14 +35,28 @@ library(ggthemes)
 library(bayestestR)
 ```
 
+# 　
+
+
+\Huge
+
+\begin{itemize}\itemsep=1ex
+\item[\textbullet] \scalebox{1.4}{根拠}\pause
+\item[\textbullet] \scalebox{1.4}{文書}
+%\pause
+%     \begin{itemize}
+%     \item  \scalebox{2.2}{\hspace{1ex}本質}
+%     \item  \scalebox{2.2}{\hspace{1ex}スピード感}
+%     \end{itemize}
+\end{itemize}
 
 # a beautiful true story
 
 \Huge
 
 \begin{itemize}
-\item[\textbullet] 予算の会議\pause
-\item[\textbullet] ある事業について\pause
+\item[\textbullet] 予算の会議
+\item[\textbullet] ある事業について
 \item[\textbullet] どんな成果?
 \end{itemize}
 
@@ -512,8 +526,6 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 \Huge
 
 -  \textbullet{}\hspace{2pt} 本質
-\bigskip
--  \textbullet{}\hspace{2pt} 体裁
 \bigskip
 -  \textbullet{}\hspace{2pt} スピード感
 
