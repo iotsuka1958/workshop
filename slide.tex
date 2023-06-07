@@ -186,6 +186,11 @@
       decoration={random steps, segment length=2pt, amplitude=0.4pt}]
       (T) {#2};}
 %%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{softblue}{RGB}{87, 117, 144}
+\definecolor{gentlegreen}{RGB}{125, 158, 128}
+\definecolor{lightpurple}{RGB}{156, 134, 170}
+\definecolor{warmorange}{RGB}{202, 137, 98}
+\definecolor{gentlered}{RGB}{169, 105, 102}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -638,10 +643,41 @@ I ask my colleagues and their staffs to see to it that
 \item \scalebox{1.3}{歯切れよくいいきれ}
   \begin{itemize}
   \item \pause
-  \item \scalebox{2}{\textbullet{}\myCrossedOut{red!60!gray}{冗長ないいまわし}}
-  \item \scalebox{2}{\textbullet{}\myCrossedOut{red!60!gray}{ぼかしことば}}
+  \item \scalebox{2}{\textbullet{}\myCrossedOut{softblue}{冗長ないいまわし}}
+%  \item \scalebox{2}{\textbullet{}\myCrossedOut{softblue}{ぼかしことば}}
 \end{itemize}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Brevity}
+\protect\hypertarget{brevity-9}{}
+\LARGE
+\scalebox{1.1}{AはBだと言ってよいのではないか}\par
+\scalebox{1.1}{と思われる}
+\end{frame}
+
+\begin{frame}{Brevity}
+\protect\hypertarget{brevity-10}{}
+\LARGE
+
+\scalebox{1.1}{AはBだと言ってよいのではないか}\par
+\myCrossedOut{olive}{\scalebox{1.1}{と思われる}}
+\end{frame}
+
+\begin{frame}{Brevity}
+\protect\hypertarget{brevity-11}{}
+\LARGE
+
+\scalebox{1.1}{AはBだと言ってよい\myCrossedOut{olive}{のではないか}}\par
+\myCrossedOut{olive}{\scalebox{1.1}{と思われる}}
+\end{frame}
+
+\begin{frame}{Brevity}
+\protect\hypertarget{brevity-12}{}
+\LARGE
+
+\scalebox{1.1}{AはBだ\myCrossedOut{olive}{と言ってよい}\myCrossedOut{olive}{のではないか}}\par
+\myCrossedOut{olive}{\scalebox{1.1}{と思われる}}
 \end{frame}
 
 \begin{frame}{manual}
@@ -663,8 +699,65 @@ I ask my colleagues and their staffs to see to it that
 \end{itemize}
 \end{frame}
 
-\begin{frame}{manual}
-\protect\hypertarget{manual-1}{}
+\begin{frame}{quiz 1}
+\protect\hypertarget{quiz-1}{}
+\Huge
+
+又は or または
+\end{frame}
+
+\begin{frame}{quiz 2}
+\protect\hypertarget{quiz-2}{}
+\Huge
+
+子供 or 子ども \pause
+
+\bigskip
+
+\Large
+
+\raggedleft
+\begin{tabular}{@{}lll@{}}
+教育振興基本計画&子供&手引のとおり\\\pause
+総合計画&子ども&手引から逸脱
+\end{tabular}
+\pause
+
+\vfill
+
+子どもと親のサポートセンター
+\end{frame}
+
+\begin{frame}{quiz 3--computer}
+\protect\hypertarget{quiz-3computer}{}
+\Huge
+
+\begin{tabular}{@{}ll}
+&コンピューター\\
+or&コンピュータ
+\end{tabular}
+
+\pause
+
+\vfill
+
+\Large
+\raggedleft
+\begin{tabular}{@{}ll}
+手引&原則「ター」。でも「タ」もOK\\\pause
+学習指導要領　&コンピュータ
+\end{tabular}
+\pause
+
+\vfill
+
+総合教育センター
+
+同じ--terなのに
+\end{frame}
+
+\begin{frame}{手引 or 手引き}
+\protect\hypertarget{ux624bux5f15-or-ux624bux5f15ux304d}{}
 \IfFileExists{./seisaku_homu01.png}{\scalebox{1.05}{\includegraphics{seisaku_homu01.png}}}{\relax}
 \end{frame}
 
