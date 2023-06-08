@@ -3,6 +3,7 @@ title: |
   | oyoyo
   | hogehoge研修
 author: "iotsuka"
+institute: "piyopiyo"
 date: '2023-06-12'
 output:
   beamer_presentation:
@@ -33,22 +34,18 @@ library(gt)
 library(ragg)
 library(ggthemes)
 library(bayestestR)
+library(latex2exp)
 ```
 
-# 　
-
+# contents
 
 \Huge
 
-\begin{itemize}\itemsep=1ex
-\item[\textbullet] \scalebox{1.4}{Data}\pause
-\item[\textbullet] \scalebox{1.4}{文書}
-%\pause
-%     \begin{itemize}
-%     \item  \scalebox{2.2}{\hspace{1ex}本質}
-%     \item  \scalebox{2.2}{\hspace{1ex}スピード感}
-%     \end{itemize}
-\end{itemize}
+\scalebox{1.2}{\begin{tabular}{@{}ll}
+Part 1&データ\\
+Part 2&文書
+\end{tabular}}
+
 
 # a beautiful true story
 
@@ -68,23 +65,29 @@ library(bayestestR)
 \Huge
 
 \begin{itemize}
-\item[\textbullet] 思いはだいじ\ldots\pause
-\item[\textbullet] でも、\par
+\item 思いはだいじ\ldots\pause
+\item でも、\par
 思いだけでは進まない
 \end{itemize}
 \pause
-\vspace*{-30pt}
-\hspace*{18pt}\rotatebox{13}{\scalebox{2}{\textcolor{gray}{客観的な根拠!}}}
+\vspace*{-22pt}
+\hspace*{18pt}\rotatebox{13}{\scalebox{2}{\textcolor{gray}{客観的な}\textcolor{softblue}{根拠}}}
 
-# case study 1
+# evidence-based policy-making
 
 \Huge
 
-\begin{itemize}
-\item[\textbullet] 法律・規則\pause
-\item[\textbullet] 公約\pause
-\item[\textbullet] \textcolor{red!50}{データ・数字}
-\end{itemize}
+法律・規則\pause
+
+公約\pause
+
+\scalebox{1.732}{\textcolor{red!40}{データ}}\pause{\large ←きょうはこれ}
+
+#
+
+\Huge
+
+\scalebox{2}{\textcolor{softblue}{事例1}}
 
 # case study 1
 
@@ -107,14 +110,14 @@ library(bayestestR)
 
 \LARGE
 
-どれくらいの人がかかっている病気??
+どれくらいの人がかかっている病気?
 \pause
   \begin{itemize}
   \item 　\textbullet{}\hspace{2pt}人口の1\%
   \item 
   \end{itemize}
 \pause
-検査の性能は??
+検査の性能は?
 \pause
   \begin{itemize}
   \item 　\textbullet{}\hspace{2pt}病気なら陽性確率90\%
@@ -151,12 +154,19 @@ accuracy <- function(x, y, z){
 }
 ```
 
+#
+
+\Huge
+
+Your answer is \ldots
+
 
 # case study 1
 \Huge
 
-\scalebox{1.4}{計算しよう}
+\scalebox{1.4}{\textcolor{softblue}{そうだ、}}
 
+\scalebox{1.4}{\textcolor{softblue}{計算しよう!}}
 
 # case study 1
 
@@ -193,6 +203,11 @@ accuracy <- function(x, y, z){
 \]
 \end{center}
 
+#
+
+\Huge
+
+\scalebox{2}{\textcolor{softblue}{事例2}}
 
 
 # case study 2 --- world war II
@@ -216,10 +231,18 @@ This work is licensed under the Creative Commons Attribution-Share Alike 4.0 Int
 
 \Huge
 \vspace{-120pt}
-\raisebox{120pt}{\rotatebox{10}{\textcolor{black}{\scalebox{1.2}{どこを}}}}
+\raisebox{120pt}{\rotatebox{10}{\textcolor{softblue}{\scalebox{1.2}{どこを}}}}
 
 \vspace{-130pt}
-\raisebox{130pt}{\rotatebox{10}{\textcolor{black}{\scalebox{1.2}{補強?}}}}
+\raisebox{130pt}{\rotatebox{10}{\textcolor{softblue}{\scalebox{1.2}{補強?}}}}
+
+
+#
+
+\Huge
+
+\scalebox{2}{\textcolor{softblue}{事例3}}
+
 
 # case study 3
 
@@ -228,7 +251,7 @@ This work is licensed under the Creative Commons Attribution-Share Alike 4.0 Int
 \begin{itemize}
 \item[\textbullet] ある自治体
 \item[\textbullet] 複数の学校
-\item[\textbullet] 共通テスト
+\item[\textbullet] 共通学力テスト
 \end{itemize}
 
 # case study 3
@@ -236,12 +259,12 @@ This work is licensed under the Creative Commons Attribution-Share Alike 4.0 Int
 \Huge
 
 \begin{itemize}
-\item[\textbullet] 家庭での学習時間
+\item[\textbullet] 試験勉強時間
 \item[\textbullet] 正答率
 \end{itemize}
 \pause
 \vspace*{-55pt}
-\rotatebox{20}{\scalebox{2}{\textcolor{gray}{どんな関係?}}}
+\rotatebox{20}{\scalebox{2}{\textcolor{softblue}{どんな関係?}}}
 
 
 # plot
@@ -254,6 +277,7 @@ data <- simulate_simpson(n = 200, groups = 4, r = 0.3, group_prefix = "school_")
   mutate(V2 = (V2 + 9) * 10, V1 = .5 * V1 + 1) |> 
   rename("study_time" = V1, "grade" = V2, "school" = Group) |> 
   mutate(study_time = study_time*.7) |> 
+  mutate(study_time = if_else(study_time < 0, 0, study_time)) |> 
   mutate(grade = if_else(grade > 100, 100, grade))
 #####################
 piyopiyo <- function(){
@@ -374,11 +398,11 @@ piyopiyo() +
 \Huge
 
 \raggedleft
-\scalebox{2}{\textcolor{olive}{Data}}\scalebox{1.4}{に基づき}
+\scalebox{2}{\textcolor{softblue}{データ}}\scalebox{1.2}{に基づき}
 
-\scalebox{1.4}{根拠を持って}
+\scalebox{2}{\textcolor{lightpurple}{根拠}}\scalebox{1.2}{を持って}
 
-\scalebox{1.4}{仕事を前に進めよう!}
+\scalebox{1.2}{仕事を前に進めよう!}
 
 # tebiki
 
@@ -444,14 +468,14 @@ Nearly all of them are far too long.\par
 # Brevity
 \Large
 
-To do our work, we all have to read \textcolor{olive}{a mass of papers}. 
-Nearly all of them are \textcolor{olive}{far too long}.\par
+To do our work, we all have to read \textcolor{softblue}{a mass of papers}. 
+Nearly all of them are \textcolor{softblue}{far too long}.\par
 
 
 \vfill
 \Huge
 
-\rotatebox{15}{\scalebox{1.6}{\textcolor{olive}{\begin{tabular}{l}大量の書類\\長すぎる\end{tabular}}}}
+\rotatebox{15}{\scalebox{1.6}{\textcolor{softblue}{\begin{tabular}{l}大量の書類\\長すぎる\end{tabular}}}}
 
 \vfill
 
@@ -474,11 +498,11 @@ while energy has to be spent in looking for the essential points.\par
 
 
 This \textcolor{olive}{wastes time}, 
-while energy has to be spent in looking for \textcolor{olive}{the essential points}.\par
+while energy has to be spent in looking for \textcolor{softblue}{the essential points}.\par
 
 \vfill\Huge
 
-\rotatebox{15}{\scalebox{1.6}{\textcolor{olive}{\begin{tabular}{l}時間のむだ\\要点がわからない\end{tabular}}}}
+\rotatebox{15}{\scalebox{1.6}{\textcolor{softblue}{\begin{tabular}{l}時間のむだ\\要点がわからない\end{tabular}}}}
 
 \vfill
 
@@ -500,12 +524,12 @@ I ask my colleagues and their staffs to see to it that their Reports are shorter
 \Large
 
 
-I ask my colleagues and their staffs to see to it that \textcolor{olive}{their Reports are shorter}.
+I ask my colleagues and their staffs to see to it that \textcolor{softblue}{their Reports are shorter}.
 
 
 \vfill\Huge
 
-\rotatebox{15}{\scalebox{1.6}{\textcolor{olive}{\begin{tabular}{l}報告書を短く\end{tabular}}}}
+\rotatebox{15}{\scalebox{1.6}{\textcolor{softblue}{\begin{tabular}{l}報告書を短く\end{tabular}}}}
 
 \vfill
 
@@ -515,8 +539,7 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 \Huge
 
 \raggedleft
-\scalebox{1.6}{文書は\scalebox{1.4}{\textcolor{olive}{簡潔}}に!}
-
+\scalebox{1.6}{文書は\scalebox{1.4}{\textcolor{softblue}{簡潔}}に!}
 
 # Brevity
 \Huge
@@ -539,20 +562,41 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 \LARGE
 
 \scalebox{1.1}{AはBだと言ってよいのではないか}\par
-\myCrossedOut{olive}{\scalebox{1.1}{と思われる}}
+\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
 
 # Brevity
 \LARGE
 
-\scalebox{1.1}{AはBだと言ってよい\myCrossedOut{olive}{のではないか}}\par
-\myCrossedOut{olive}{\scalebox{1.1}{と思われる}}
+\scalebox{1.1}{AはBだと言ってよい\myCrossedOut{softblue}{のではないか}}\par
+\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
 
 # Brevity
 \LARGE
 
-\scalebox{1.1}{AはBだ\myCrossedOut{olive}{と言ってよい}\myCrossedOut{olive}{のではないか}}\par
-\myCrossedOut{olive}{\scalebox{1.1}{と思われる}}
+\scalebox{1.1}{AはBだ\myCrossedOut{softblue}{と言ってよい}\myCrossedOut{softblue}{のではないか}}\par
+\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
 
+
+# Brevity 
+
+
+\begin{tikzpicture}
+ \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm, fill=gray!10}};
+  \node[draw, block] (factor0) at (0, 3) {\begin{tabular}{@{}l@{}}根拠\\(法・データ等)\end{tabular}};\pause
+  \node[draw, block] (factor1) at (0,0) {簡潔な文書};
+  \draw[->, very thick] (factor0) -- (factor1) node[midway, right] {整理}; \pause
+  \node[draw, block] (factor2) at (3.5,0) {明確な要点};
+  \draw[->, very thick] (factor1) -- (factor2) node[midway, above] {};\pause
+  \node[draw, block] (factor3) at (8,0) {迅速な　\\意思決定};
+   \draw[->, very thick] (factor2) -- (factor3) node[midway, above] {レク};
+  \draw[->, very thick] (factor2) -- (factor3) node[midway, below] {決裁};
+\end{tikzpicture}
+
+# another important issue
+
+\LARGE
+\scalebox{1.4}{完成度の追求}\pause
+\scalebox{1.4}{はやめよう!}
 
 # manual
 
@@ -560,25 +604,26 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 \IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
 
 
-# quiz
-
-\Huge
-
-\begin{itemize}
-\item \scalebox{1.2}{1 又は or または}\pause
-\item \scalebox{1.2}{2 子供 or 子ども}\pause
-\item \scalebox{1.2}{3 コンピューター}\par
-\scalebox{1.2}{or コンピュータ}\pause
-\item \scalebox{1.2}{4 手引 or 手引き}\pause
-\end{itemize}
-
-
 # quiz 1
  
 \Huge
 
 又は or または
- 
+
+
+\bigskip
+
+\large
+
+\raggedleft
+\textcolor{white}{\begin{tabular}{@{}lll@{}}\toprule
+教育振興基本計画&子供&手引のとおり\\
+総合計画&子ども&手引から逸脱\\\bottomrule
+\end{tabular}}
+
+
+\vfill
+
 # quiz 2
  
 \Huge
@@ -588,24 +633,23 @@ I ask my colleagues and their staffs to see to it that \textcolor{olive}{their R
 
 \bigskip
 
-\Large
+\large
 
 \raggedleft
-\begin{tabular}{@{}lll@{}}
+\begin{tabular}{@{}lll@{}}\toprule
 教育振興基本計画&子供&手引のとおり\\\pause
-総合計画&子ども&手引から逸脱
+総合計画&子ども&手引から逸脱\\\bottomrule
 \end{tabular}
 \pause
 
 \vfill
 
-子どもと親のサポートセンター
 
-# quiz 3--computer
+# quiz 3 ーter
 
 \Huge
 
-\begin{tabular}{@{}ll}
+\begin{tabular}{@{}ll@{}}
 &コンピューター\\
 or&コンピュータ
 \end{tabular}
@@ -614,17 +658,17 @@ or&コンピュータ
 
 \vfill
 
-\Large
+\large
 \raggedleft
-\begin{tabular}{@{}ll}
-手引&原則「ター」。でも「タ」もOK\\\pause
-学習指導要領　&コンピュータ
+\begin{tabular}{@{}ll@{}}\toprule
+手引&原則「コンピューター」だが\\
+&「コンピュータ」でもOK\\\pause
+学習指導要領&「コンピュータ」\\\bottomrule
 \end{tabular}
 \pause
 
 \vfill
 
-総合教育センター
 
 # 手引 or 手引き
 
