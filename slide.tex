@@ -191,6 +191,21 @@
 \definecolor{lightpurple}{RGB}{156, 134, 170}
 \definecolor{warmorange}{RGB}{202, 137, 98}
 \definecolor{gentlered}{RGB}{169, 105, 102}
+\definecolor{softred}{RGB}{169, 0, 0}
+\definecolor{darkred}{RGB}{207, 89, 89}      % ダークレッド
+\definecolor{brightorange}{RGB}{235, 116, 70}     % ブライトオレンジ
+\definecolor{lightorange}{RGB}{242, 150, 90}     % ライトオレンジ
+\definecolor{gold}{RGB}{255, 174, 66}     % ゴールド
+\definecolor{coral}{RGB}{247, 126, 101}    % コーラル
+\definecolor{mintgreen}{RGB}{124, 156, 124}  % ミントグリーン
+\definecolor{khaki}{RGB}{153, 141, 116}  % カーキ
+\definecolor{mocha}{RGB}{141, 124, 113}  % モカ
+\definecolor{slateblue}{RGB}{124, 123, 156}  % スレートブルー
+\definecolor{lightyellow}{RGB}{242, 207, 90}    % ライトイエロー
+\definecolor{yellowgold}{RGB}{235, 189, 70}    % イエローゴールド
+\definecolor{mediumyellow}{RGB}{224, 171, 46}    % メディアムイエロー
+\definecolor{darkyellow}{RGB}{217, 153, 25}    % ダークイエロー
+\definecolor{goldenyellow}{RGB}{204, 135, 15}    % ゴールデンイエロー
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -412,6 +427,13 @@ This work is licensed under the Creative Commons Attribution-Share Alike
 \raisebox{130pt}{\rotatebox{10}{\textcolor{softblue}{\scalebox{1.2}{補強?}}}}
 \end{frame}
 
+\begin{frame}{case study 2 生存者のバイアス}
+\protect\hypertarget{case-study-2-ux751fux5b58ux8005ux306eux30d0ux30a4ux30a2ux30b9}{}
+\LARGE
+
+データの偏り・欠落したデータ
+\end{frame}
+
 \begin{frame}{}
 \protect\hypertarget{section-3}{}
 \Huge
@@ -622,7 +644,7 @@ essential points.
 \protect\hypertarget{brevity-4}{}
 \Large
 
-This \textcolor{olive}{wastes time}, while energy has to be spent in
+This \textcolor{softblue}{wastes time}, while energy has to be spent in
 looking for \textcolor{softblue}{the essential points}.
 
 \par
@@ -696,7 +718,7 @@ I ask my colleagues and their staffs to see to it that
 \LARGE
 
 \scalebox{1.1}{AはBだと言ってよいのではないか}\par
-\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
+\myCrossedOut{softred}{\scalebox{1.1}{と思われる}}
 \end{frame}
 
 \begin{frame}{Brevity}
@@ -704,28 +726,27 @@ I ask my colleagues and their staffs to see to it that
 \LARGE
 
 \scalebox{1.1}{AはBだと言ってよい\myCrossedOut{softblue}{のではないか}}\par
-\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
+\myCrossedOut{softred}{\scalebox{1.1}{と思われる}}
 \end{frame}
 
 \begin{frame}{Brevity}
 \protect\hypertarget{brevity-12}{}
 \LARGE
 
-\scalebox{1.1}{AはBだ\myCrossedOut{softblue}{と言ってよい}\myCrossedOut{softblue}{のではないか}}\par
-\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
+\scalebox{1.1}{AはBだ\myCrossedOut{mintgreen}{と言ってよい}\myCrossedOut{softblue}{のではないか}}\par
+\myCrossedOut{softred}{\scalebox{1.1}{と思われる}}
 \end{frame}
 
 \begin{frame}{Brevity}
 \protect\hypertarget{brevity-13}{}
 \begin{tikzpicture}
  \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm, fill=gray!10}};
-  \node[draw, block] (factor0) at (0, 3) {\begin{tabular}{@{}l@{}}根拠\\(法・データ等)\end{tabular}};\pause
-  \node[draw, block] (factor1) at (0,0) {簡潔な文書};
-  \draw[->, very thick] (factor0) -- (factor1) node[midway, right] {整理}; \pause
+  \node[draw, block] (factor1) at (0,0) {簡潔な文書\\(本質)};
+  \pause
   \node[draw, block] (factor2) at (3.5,0) {明確な要点};
   \draw[->, very thick] (factor1) -- (factor2) node[midway, above] {};\pause
   \node[draw, block] (factor3) at (8,0) {迅速な　\\意思決定};
-   \draw[->, very thick] (factor2) -- (factor3) node[midway, above] {レク};
+ \draw[->, very thick] (factor2) -- (factor3) node[midway, above] {レク};
   \draw[->, very thick] (factor2) -- (factor3) node[midway, below] {決裁};
 \end{tikzpicture}
 \end{frame}
@@ -739,13 +760,22 @@ I ask my colleagues and their staffs to see to it that
 
 \vspace*{-35pt}
 
-\scalebox{1.4}{\myCrossedOut{softblue}{\textcolor{black}{完成度の追求}}}\pause
+\scalebox{1.4}{\myCrossedOut{brightorange}{\textcolor{black}{完成度の追求}}}\pause
 
 \scalebox{1.4}{8割でよし}\pause
 
 \vfill
 
-\scalebox{1.1}{でもファクトチェックだけは}
+\scalebox{1}{でも数字や固有名詞}
+
+\scalebox{1}{これだけはまちがえないぞ}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+\Huge
+
+\scalebox{1.2}{体裁}
 \end{frame}
 
 \begin{frame}{manual}
@@ -866,12 +896,12 @@ or&コンピュータ
 \IfFileExists{./bento.jpg}{\centering\scalebox{.85}{\includegraphics[width=\textheight]{bento.jpg}}}{\relax}
 \end{frame}
 
-\begin{frame}{last but not least}
-\protect\hypertarget{last-but-not-least}{}
+\begin{frame}{}
+\protect\hypertarget{section-5}{}
 \begin{tikzpicture}
  \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm, fill=gray!10}};
-  \node[draw, block] (factor0) at (0, 3) {\begin{tabular}{@{}l@{}}根拠\\(法・データ等)\end{tabular}};
-  \node[draw, block] (factor1) at (0,0) {簡潔な文書};
+  \node[draw, block] (factor0) at (0, 3) {\begin{tabular}{@{}l@{}}根拠\\{(\footnotesize 法令・データ等})\end{tabular}};
+  \node[draw, block] (factor1) at (0,0) {簡潔な文書\\(本質)};
   \draw[->, very thick] (factor0) -- (factor1) node[midway, right] {整理}; 
   \node[draw, block] (factor2) at (3.5,0) {明確な要点};
   \draw[->, very thick] (factor1) -- (factor2) node[midway, above] {};
@@ -890,7 +920,7 @@ or&コンピュータ
 \end{frame}
 
 \begin{frame}[fragile]{}
-\protect\hypertarget{section-4}{}
+\protect\hypertarget{section-6}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{piyopiyo}\NormalTok{()}

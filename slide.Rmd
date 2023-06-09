@@ -243,6 +243,12 @@ This work is licensed under the Creative Commons Attribution-Share Alike 4.0 Int
 \raisebox{130pt}{\rotatebox{10}{\textcolor{softblue}{\scalebox{1.2}{補強?}}}}
 
 
+# case study 2 生存者のバイアス
+
+\LARGE
+
+データの偏り・欠落したデータ
+
 #
 
 \Huge
@@ -327,8 +333,6 @@ piyopiyo() +
   aes(colour = school) +
   ggthemes::scale_colour_few(guide = "none")
 ```
-
-
 
 
 # case study 3
@@ -507,7 +511,7 @@ while energy has to be spent in looking for the essential points.\par
 \Large
 
 
-This \textcolor{olive}{wastes time}, 
+This \textcolor{softblue}{wastes time}, 
 while energy has to be spent in looking for \textcolor{softblue}{the essential points}.\par
 
 \vfill\Huge
@@ -572,35 +576,37 @@ I ask my colleagues and their staffs to see to it that \textcolor{softblue}{thei
 \LARGE
 
 \scalebox{1.1}{AはBだと言ってよいのではないか}\par
-\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
+\myCrossedOut{softred}{\scalebox{1.1}{と思われる}}
 
 # Brevity
 \LARGE
 
 \scalebox{1.1}{AはBだと言ってよい\myCrossedOut{softblue}{のではないか}}\par
-\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
+\myCrossedOut{softred}{\scalebox{1.1}{と思われる}}
 
 # Brevity
 \LARGE
 
-\scalebox{1.1}{AはBだ\myCrossedOut{softblue}{と言ってよい}\myCrossedOut{softblue}{のではないか}}\par
-\myCrossedOut{softblue}{\scalebox{1.1}{と思われる}}
+\scalebox{1.1}{AはBだ\myCrossedOut{mintgreen}{と言ってよい}\myCrossedOut{softblue}{のではないか}}\par
+\myCrossedOut{softred}{\scalebox{1.1}{と思われる}}
 
 
 # Brevity 
 
 
+
 \begin{tikzpicture}
  \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm, fill=gray!10}};
-  \node[draw, block] (factor0) at (0, 3) {\begin{tabular}{@{}l@{}}根拠\\(法・データ等)\end{tabular}};\pause
-  \node[draw, block] (factor1) at (0,0) {簡潔な文書};
-  \draw[->, very thick] (factor0) -- (factor1) node[midway, right] {整理}; \pause
+  \node[draw, block] (factor1) at (0,0) {簡潔な文書\\(本質)};
+  \pause
   \node[draw, block] (factor2) at (3.5,0) {明確な要点};
   \draw[->, very thick] (factor1) -- (factor2) node[midway, above] {};\pause
   \node[draw, block] (factor3) at (8,0) {迅速な　\\意思決定};
-   \draw[->, very thick] (factor2) -- (factor3) node[midway, above] {レク};
+ \draw[->, very thick] (factor2) -- (factor3) node[midway, above] {レク};
   \draw[->, very thick] (factor2) -- (factor3) node[midway, below] {決裁};
 \end{tikzpicture}
+
+
 
 # another important issue
 
@@ -610,13 +616,20 @@ I ask my colleagues and their staffs to see to it that \textcolor{softblue}{thei
 
 \vspace*{-35pt}
 
-\scalebox{1.4}{\myCrossedOut{softblue}{\textcolor{black}{完成度の追求}}}\pause
+\scalebox{1.4}{\myCrossedOut{brightorange}{\textcolor{black}{完成度の追求}}}\pause
 
 \scalebox{1.4}{8割でよし}\pause
 
 \vfill
 
-\scalebox{1.1}{でもファクトチェックだけは}
+\scalebox{1}{でも数字や固有名詞}
+
+\scalebox{1}{これだけはまちがえないぞ}
+#
+\Huge
+
+\scalebox{1.2}{体裁}
+
 
 # manual
 
@@ -739,14 +752,12 @@ or&コンピュータ
 
 
 
-# last but not least
+# 
  
-
-
 \begin{tikzpicture}
  \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm, fill=gray!10}};
-  \node[draw, block] (factor0) at (0, 3) {\begin{tabular}{@{}l@{}}根拠\\(法・データ等)\end{tabular}};
-  \node[draw, block] (factor1) at (0,0) {簡潔な文書};
+  \node[draw, block] (factor0) at (0, 3) {\begin{tabular}{@{}l@{}}根拠\\{(\footnotesize 法令・データ等})\end{tabular}};
+  \node[draw, block] (factor1) at (0,0) {簡潔な文書\\(本質)};
   \draw[->, very thick] (factor0) -- (factor1) node[midway, right] {整理}; 
   \node[draw, block] (factor2) at (3.5,0) {明確な要点};
   \draw[->, very thick] (factor1) -- (factor2) node[midway, above] {};
@@ -762,6 +773,9 @@ or&コンピュータ
 文書のできは8割でよし
 
 体裁は手引どおりに。でも、ほどほどに
+
+
+
 
 #
 
