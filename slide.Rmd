@@ -14,6 +14,7 @@ output:
       in_header: header.tex
     fig_caption: true
     incremental: true
+classoption: "aspectratio=169"
 ---
 
 ```{r setup, include=FALSE}
@@ -126,9 +127,11 @@ Part 2&文書
 検査の性能は?
 \pause
   \begin{itemize}
-  \item 　\textbullet{}\hspace{2pt}病気なら陽性確率90\%
+  \item 　\textbullet{}\hspace{2pt}病気なら陽性確率90\%\pause
+  \textcolor{gentlered}{←感度}
   \pause
-  \item 　\textbullet{}\hspace{2pt}病気でないなら陰性確率90\%
+  \item 　\textbullet{}\hspace{2pt}病気でないなら陰性確率90\%\pause
+  \textcolor{softblue}{←特異度}
   \end{itemize}
 
 
@@ -170,12 +173,17 @@ Your answer is \ldots
 # case study 1
 \Huge
 
+\raggedleft
 \scalebox{1.4}{\textcolor{softblue}{そうだ、}}
-
 \scalebox{1.4}{\textcolor{softblue}{計算しよう!}}
+
+\vfill
+
+\rotatebox{10}{$P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}$}
 
 # case study 1
 
+\centering
 \scalebox{.88}{%
 \begin{tikzpicture}
  \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm}};
@@ -188,7 +196,7 @@ Your answer is \ldots
 \node[block,fill=gray!10] (not_sick) at (3.5,4) {not sick\\990人};
 \draw [->,very thick,color=black!60] (population) to[out=-90, in=120]  node[auto=left] {$99\%$} (not_sick); 
 \pause
-\node[block,fill=red!10,draw=red] (true_positive) at (-5,) {true positive\\9人};
+\node[block,fill=red!10,draw=red] (true_positive) at (-5,1) {true positive\\9人};
 \draw [->,very thick,,color=black!60] (sick) to[out=-90, in=90]  node[auto=right] {感度$90\%$} (true_positive); 
 \pause
 \node[block,fill=gray!10] (false_negative) at (-2,1) {false negative\\1人};
@@ -303,7 +311,7 @@ piyopiyo <- function(){
 
 
 
-```{r}
+```{r, fig.width=16, fig.height=9}
 piyopiyo()
 ```
 
@@ -312,7 +320,7 @@ piyopiyo()
 
 
 
-```{r echo=FALSE, message=FALSE}
+```{r echo=FALSE, message=FALSE, fig.width=16, fig.height=9}
 piyopiyo() +
   geom_smooth(method = "lm", se = FALSE)
 ```
@@ -327,7 +335,7 @@ piyopiyo() +
 
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.width=16, fig.height=9}
 set.seed(1)
 piyopiyo() +
   aes(colour = school) +
@@ -339,7 +347,7 @@ piyopiyo() +
 
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.width=16, fig.height=9}
 piyopiyo() +
   aes(colour = school) +
   scale_color_few(guide = "none") +
@@ -350,7 +358,7 @@ piyopiyo() +
 
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.width=16, fig.height=9}
 set.seed(1)
 piyopiyo() +
   aes(colour = school) +
@@ -363,7 +371,7 @@ piyopiyo() +
 
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.width=16, fig.height=9}
 piyopiyo() +
   aes(colour = school) +
   scale_color_few(guide = "none") +
@@ -374,7 +382,7 @@ piyopiyo() +
 
 
 
-```{r echo=FALSE, message=FALSE}
+```{r echo=FALSE, message=FALSE, fig.width=16, fig.height=9}
 piyopiyo() +
   aes(colour = school) +
   scale_color_few(guide = "none") +
@@ -779,7 +787,7 @@ or&コンピュータ
 
 #
 
-```{r cars, echo = TRUE}
+```{r cars, echo = TRUE, fig.width=16, fig.height=9}
 piyopiyo()
 ```
 
