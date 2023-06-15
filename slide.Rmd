@@ -1,6 +1,6 @@
 ---
 title: |
-  | 行政職としての仕事の進め方
+  | 行政職員としての仕事の進め方
   | 
 author: ""
 institute: ""
@@ -84,11 +84,11 @@ Part 2&文書
 
 \Huge
 
-法令\pause
+法令
 
 公約\pause
 
-\scalebox{1.732}{\textcolor{red!40}{データ}}\pause{\large ←きょうの前半はこれ}
+\scalebox{1.732}{\textcolor{red!40}{データ}}{\large ← きょうの前半はこれ}
 
 #
 
@@ -118,7 +118,7 @@ Part 2&文書
 \LARGE
 
 どれくらいの人がかかっている病気?
-\pause
+
   \begin{itemize}
   \item 　\textbullet{}\hspace{2pt}人口の1\%
   \item 
@@ -127,11 +127,11 @@ Part 2&文書
 検査の性能は?
 \pause
   \begin{itemize}
-  \item 　\textbullet{}\hspace{2pt}病気なら陽性確率90\%\pause
-  \textcolor{gentlered}{←感度}
+  \item 　\textbullet{}\hspace{2pt}病気なら陽性確率90\%
+  \textcolor{gentlered}{← 感度}
   \pause
-  \item 　\textbullet{}\hspace{2pt}病気でないなら陰性確率90\%\pause
-  \textcolor{softblue}{←特異度}
+  \item 　\textbullet{}\hspace{2pt}病気でないなら陰性確率90\%
+  \textcolor{softblue}{← 特異度}
   \end{itemize}
 
 
@@ -142,9 +142,8 @@ Part 2&文書
 \Huge
 \raggedleft
 \raisebox{-20pt}{\rotatebox{20}{\scalebox{1.4}{\textcolor{red!60}{\fbox{\fbox{陽性}}}}}}判定のあなたが\par
-\vspace*{-20pt}\pause
+\vspace*{-20pt}
 \scalebox{1}{\textcolor{red!60}{ほんとうに}}\par
-\pause
 \scalebox{1.4}{\textcolor{red!60}{病気}}である確率は？
 
 
@@ -327,9 +326,9 @@ piyopiyo() +
 ```
 
 
-# case study 3
+<!-- # case study 3 -->
 
-\IfFileExists{./letsnotsee.jpg}{\centering\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax}
+<!-- \IfFileExists{./letsnotsee.jpg}{\centering\includegraphics[width=\textwidth]{./letsnotsee.jpg}}{\relax} -->
 
 
 # case study 3
@@ -400,10 +399,10 @@ piyopiyo() +
 
 \begin{itemize}
 \item[\textbullet] 全体では\par
-「勉強するほど成績がさがる」
+「勉強するほど成績が下がる」
 \bigskip\pause
 \item[\textbullet] 学校ごとでは\par
-「勉強するほど成績があがる」
+「勉強するほど成績が上がる」
 \end{itemize}
 
 # case study 3 --- Simpson's Paradox
@@ -475,19 +474,19 @@ This work is licensed under the Creative Commons Attribution 2.0 Generic License
 \IfFileExists{churchill_memo.jpg}{\scalebox{1.025}{\includegraphics{churchill_memo.jpg}}}{\relax}
 
 
-# Brevity
-\Large
+<!-- # Brevity -->
+<!-- \Large -->
 
-To do our work, we all have to read a mass of papers. 
-Nearly all of them are far too long.\par
+<!-- To do our work, we all have to read a mass of papers.  -->
+<!-- Nearly all of them are far too long.\par -->
 
-\vfill
-\Huge
+<!-- \vfill -->
+<!-- \Huge -->
 
-\raggedleft
-\rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}大量の書類\\長すぎる\end{tabular}}}}
+<!-- \raggedleft -->
+<!-- \rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}大量の書類\\長すぎる\end{tabular}}}} -->
 
-\vfill
+<!-- \vfill -->
 
 # Brevity
 \Large
@@ -504,20 +503,20 @@ Nearly all of them are \textcolor{softblue}{far too long}.\par
 
 \vfill
 
-# Brevity
-\Large
+<!-- # Brevity -->
+<!-- \Large -->
 
 
-This wastes time, 
-while energy has to be spent in looking for the essential points.\par
+<!-- This wastes time,  -->
+<!-- while energy has to be spent in looking for the essential points.\par -->
 
-\vfill\Huge
+<!-- \vfill\Huge -->
 
-\raggedleft
-\rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}時間のむだ\\要点がわからない\end{tabular}}}}
+<!-- \raggedleft -->
+<!-- \rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}時間のむだ\\要点がわからない\end{tabular}}}} -->
 
-\vfill
-\mbox{}
+<!-- \vfill -->
+<!-- \mbox{} -->
 
 # Brevity
 \Large
@@ -534,19 +533,19 @@ while energy has to be spent in looking for \textcolor{softblue}{the essential p
 \vfill
 
 
-# Brevity
-\Large
+<!-- # Brevity -->
+<!-- \Large -->
 
 
-I ask my colleagues and their staffs to see to it that their Reports are shorter.
+<!-- I ask my colleagues and their staffs to see to it that their Reports are shorter. -->
 
 
-\vfill\Huge
+<!-- \vfill\Huge -->
 
-\raggedleft
-\rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}報告書を短く\end{tabular}}}}
+<!-- \raggedleft -->
+<!-- \rotatebox{15}{\scalebox{1.6}{\textcolor{white}{\begin{tabular}{l}報告書を短く\end{tabular}}}} -->
 
-\vfill
+<!-- \vfill -->
 
 # Brevity
 \Large
@@ -598,17 +597,17 @@ I ask my colleagues and their staffs to see to it that \textcolor{softblue}{thei
 \scalebox{1.1}{AはBだと言ってよいのではないか}
 \scalebox{1.1}{と思われる}
 
-# Brevity
-\LARGE
+<!-- # Brevity -->
+<!-- \LARGE -->
 
-\scalebox{1.1}{AはBだと言ってよいのではないか}
-\myCrossedOut{softred}{\scalebox{1.1}{と思われる}}
+<!-- \scalebox{1.1}{AはBだと言ってよいのではないか} -->
+<!-- \myCrossedOut{softred}{\scalebox{1.1}{と思われる}} -->
 
-# Brevity
-\LARGE
+<!-- # Brevity -->
+<!-- \LARGE -->
 
-\scalebox{1.1}{AはBだと言ってよい\myCrossedOut{softblue}{のではないか}}
-\myCrossedOut{softred}{\scalebox{1.1}{と思われる}}
+<!-- \scalebox{1.1}{AはBだと言ってよい\myCrossedOut{softblue}{のではないか}} -->
+<!-- \myCrossedOut{softred}{\scalebox{1.1}{と思われる}} -->
 
 # Brevity
 \LARGE
@@ -624,10 +623,9 @@ I ask my colleagues and their staffs to see to it that \textcolor{softblue}{thei
 \begin{tikzpicture}
  \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm, fill=gray!10}};
   \node[draw, block] (factor1) at (0,0) {簡潔な文書};
-  \pause
   \node[draw, block] (factor2) at (5.5,0) {要点が明確};
   \draw[->, very thick] (factor1) -- (factor2) node[midway, above] {本質};
-  \draw[->, very thick] (factor1) -- (factor2) node[midway, below] {歯切れよく};\pause
+  \draw[->, very thick] (factor1) -- (factor2) node[midway, below] {歯切れよく};
   \node[draw, block] (factor3) at (11,0) {迅速な　\\意思決定};
  \draw[->, very thick] (factor2) -- (factor3) node[midway, above] {レク};
   \draw[->, very thick] (factor2) -- (factor3) node[midway, below] {決裁};
@@ -646,36 +644,45 @@ I ask my colleagues and their staffs to see to it that \textcolor{softblue}{thei
 
 \vspace*{-35pt}
 
-\scalebox{1.4}{\myCrossedOut{brightorange}{\textcolor{black}{完成度の追求}}}\pause
+\scalebox{1.4}{\myCrossedOut{brightorange}{\textcolor{black}{完成度の追求}}}
 
-\scalebox{1.4}{8割でよし}\pause
+\pause
+
+\scalebox{1.4}{8割でよし}
 
 \vfill
 
 \scalebox{1}{でも、数字や固有名詞はまちがえないで}
 
 
-# 
+# Des glaneuses
 
 \raggedleft\Huge
 
 
-\IfFileExists{Millet.jpg}{\scalebox{.9}{\includegraphics{Millet.jpg}}}{\relax}
 
+\IfFileExists{Millet.jpg}{\scalebox{1.1}{\includegraphics{Millet.jpg}}}{\relax}
 
+\vspace*{-110pt}
 
+\textcolor{white}{落穂拾い　}
 
 
 #
+
 \Huge
+
+\raggedleft
+
+\scalebox{1}{落穂拾い 1}
 
 \scalebox{1.2}{体裁}
 
 
-# manual
+<!-- # manual -->
 
-\vspace*{-20pt}
-\IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
+<!-- \vspace*{-20pt} -->
+<!-- \IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax} -->
 
 
 # quiz 1
@@ -698,7 +705,7 @@ I ask my colleagues and their staffs to see to it that \textcolor{softblue}{thei
 
 \vfill
 
-\textcolor{white}{「子供と親のサポートセンター」とはいえない}
+\textcolor{white}{「子供と親のサポートセンター」とは表記できない}
 
 # quiz 2
  
@@ -713,7 +720,7 @@ I ask my colleagues and their staffs to see to it that \textcolor{softblue}{thei
 
 \raggedleft
 \begin{tabular}{@{}lll@{}}\toprule
-総合計画&子ども&手引から逸脱\\\pause
+総合計画&子ども&手引から逸脱\\
 教育振興基本計画&子供&手引のとおり\\
 \bottomrule
 \end{tabular}
@@ -721,7 +728,7 @@ I ask my colleagues and their staffs to see to it that \textcolor{softblue}{thei
 
 \vfill
 
-「子供と親のサポートセンター」とはいえない
+「子供と親のサポートセンター」とは表記できない
 
 # quiz 3 ーter
 
@@ -740,14 +747,14 @@ or&コンピュータ
 \raggedleft
 \begin{tabular}{@{}ll@{}}\toprule
 手引&原則「コンピューター」だが\\
-&「コンピュータ」でもOK\\\pause
+&「コンピュータ」でもOK\\
 学習指導要領&「コンピュータ」\\\bottomrule
 \end{tabular}
 \pause
 
 \vfill
 
-「総合教育センタ」とはいえない
+「総合教育センタ」とは表記できない
 
 # quiz 5
  
@@ -769,20 +776,20 @@ or&コンピュータ
 
 \vfill
 
-\textcolor{white}{「子供と親のサポートセンター」とはいえない}
+\textcolor{white}{「子供と親のサポートセンター」とは表記できない}
 
 
-# 政策法務課のページ
+<!-- # 政策法務課のページ -->
 
-\IfFileExists{./seisaku_homu01.png}{\centering\scalebox{1}{\includegraphics{seisaku_homu01.png}}}{\relax}
+<!-- \IfFileExists{./seisaku_homu01.png}{\centering\scalebox{1}{\includegraphics{seisaku_homu01.png}}}{\relax} -->
 
-# これは御愛嬌
+# これは御愛嬌　 　↓
 
 \IfFileExists{./seisaku_homu03.png}{\centering\scalebox{1.33}{\includegraphics{seisaku_homu03.png}}}{\relax}
 
 
 
-# 今は直っています
+# 今は「手引」と直っています
 
 \vspace*{-20pt}
 \IfFileExists{./tebiki.jpg}{\centering\scalebox{.9}{\rotatebox{-90}{\includegraphics[width=\textheight]{tebiki.jpg}}}}{\relax}
@@ -805,7 +812,43 @@ or&コンピュータ
 
 \Huge
 
-ローカルルール
+
+\raggedleft
+
+\scalebox{1}{落穂拾い 2}
+
+\scalebox{1.4}{ローカルルール}
+
+
+
+# summing up
+
+\begin{tikzpicture}
+ \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm, fill=gray!10}};
+  \node[draw, block] (factor0) at (0, 3) {\begin{tabular}{@{}l@{}}根拠\\{(\footnotesize 法令・データ等})\end{tabular}};
+  \node[draw, block] (factor1) at (0,0) {簡潔な文書};
+  \node[draw, block] (factor2) at (5.5,0) {要点が明確};
+  \draw[->, very thick] (factor1) -- (factor2) node[midway, above] {本質};
+  \draw[->, very thick] (factor0) -- (factor1) node[midway, right] {整理}; 
+ \draw[->, very thick] (factor1) -- (factor2) node[midway, below] {歯切れよく};
+  \node[draw, block] (factor3) at (11,0) {迅速な　\\意思決定};
+ \draw[->, very thick] (factor2) -- (factor3) node[midway, above] {レク};
+  \draw[->, very thick] (factor2) -- (factor3) node[midway, below] {決裁};
+  \draw[->, very thick, orange] (factor1) .. controls +(down:3cm) and +(left:3cm) .. node[sloped, below]{スピード感\,!} (factor3.south west);
+\end{tikzpicture}
+
+\vspace*{-25pt}
+
+\raggedleft
+
+文書のできは8割でよし(でも数字はまちがえない)
+
+体裁は手引どおりに、ほどほどに
+
+
+
+
+
 
 # I have a dream
 
@@ -821,7 +864,7 @@ or&コンピュータ
 \IfFileExists{./bento.jpg}{\centering\scalebox{.85}{\includegraphics[width=\textheight]{bento.jpg}}}{\relax}
 
 
-# 
+# summing up
 
 \begin{tikzpicture}
  \tikzset{block/.style={rectangle, text width=25mm, text centered, rounded corners, minimum height=1.5cm, fill=gray!10}};
@@ -835,6 +878,7 @@ or&コンピュータ
  \draw[->, very thick] (factor2) -- (factor3) node[midway, above] {レク};
   \draw[->, very thick] (factor2) -- (factor3) node[midway, below] {決裁};
   \draw[->, very thick, orange] (factor1) .. controls +(down:3cm) and +(left:3cm) .. node[sloped, below]{スピード感\,!} (factor3.south west);
+  \node (matome) at (9,3) {\Huge \textcolor{lightpurple}{おおらかにいこう!}};
 \end{tikzpicture}
 
 \vspace*{-25pt}
